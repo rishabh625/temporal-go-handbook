@@ -795,4 +795,4 @@ Contributions, issues, and feature additions are welcome! Please feel free to op
 
 ## License
 
-This project is open-source under the [MIT License](LICENSE).
+This project is open-source under the [MIT License](https://github.com/rishabh625/temporal-go-handbook/blob/main/LICENSE).
