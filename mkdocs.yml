@@ -1,4 +1,4 @@
-site_name: Temporal Go SDK Handbook
+site_name: Temporal Learning Notes
 site_description: The complete Temporal Go SDK cheat sheet & architectural reference for building durable, event-driven distributed systems.
 site_author: Rishabh Mishra
 site_url: https://rishabh625.github.io/temporal-go-handbook/
@@ -30,6 +30,7 @@ theme:
     - toc.integrate
 
 markdown_extensions:
+  - md_in_html
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences:

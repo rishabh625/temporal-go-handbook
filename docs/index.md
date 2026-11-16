@@ -3,811 +3,762 @@ hide:
   - toc
 ---
 
-# Complete Temporal Go SDK Handbook & Architectural Reference
+# Temporal Learning Notes
 
-[![Go Reference](https://pkg.go.dev/badge/go.temporal.io/sdk.svg)](https://pkg.go.dev/go.temporal.io/sdk)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Temporal Version](https://img.shields.io/badge/Temporal-v1.20%2B-blue.svg)](https://docs.temporal.io)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/rishabh625)
+A structured reference for learning the Temporal Platform, with examples and terminology focused primarily on the Go SDK.
 
-> An in-depth, production-ready handbook and cheat sheet for building resilient, event-driven, distributed applications using the **Temporal Platform** and the **Temporal Go SDK** (`go.temporal.io/sdk`).
+> **Note:** These are personal learning notes. Verify version-specific limits and APIs against the current Temporal documentation before using them in production.
 
----
+## Table of Contents
 
-<details>
-<summary><strong>⚡ Quick Reference / TL;DR Cheat Sheet (Click to expand)</strong></summary>
+<details markdown="1">
+<summary><strong>Click to expand Table of Contents</strong></summary>
 
-<br>
-
-| Requirement / Scenario | Temporal Primitive | Go SDK Implementation / API |
-|:---|:---|:---|
-| **Non-deterministic / I/O work** | Activity | `workflow.ExecuteActivity(ctx, ActivityFunc, args)` |
-| **Durable sleep / delay** | Workflow Timer | `workflow.Sleep(ctx, duration)` |
-| **Inspect running state (read-only)** | Query | `workflow.SetQueryHandler(ctx, "queryName", handler)` |
-| **Asynchronous state update** | Signal | `workflow.GetSignalChannel(ctx, "signalName")` |
-| **Signal a workflow that may not exist** | Signal-With-Start | `client.SignalWithStartWorkflow(ctx, id, signal, ...)` |
-| **Long-running loop (prevent history explosion)** | Continue-As-New | `workflow.NewContinueAsNewError(ctx, WorkflowFunc, ...)` |
-| **Detect stuck long-running activity** | Heartbeat | `activity.RecordHeartbeat(ctx, progress)` |
-| **Graceful workflow shutdown** | Cancellation | `workflow.GetVersion(ctx, ...)` & context cancellation |
-| **Filter & search workflows** | Search Attributes | List Filter: `WorkflowType = "Order" AND Status = "Running"` |
-| **Data encryption & privacy** | Custom Payload Codec | Implement `converter.PayloadCodec` |
-
-</details>
-
----
-
-<details>
-<summary><strong>📖 Table of Contents (Click to expand)</strong></summary>
-
-<br>
-
-- [1. Temporal Platform Architecture](#1-temporal-platform-architecture)
-  - [Core Components](#core-components)
-  - [System Flow Diagram](#system-flow-diagram)
-- [2. Core Concepts: Workflows vs Activities](#2-core-concepts-workflows-vs-activities)
-  - [Workflows: Durable Execution](#workflows-durable-execution)
-  - [Activities: Side Effects \& I/O](#activities-side-effects--io)
-  - [Workflows vs Activities Comparison Matrix](#workflows-vs-activities-comparison-matrix)
-- [3. Workers and Task Queues](#3-workers-and-task-queues)
-  - [Worker Architecture](#worker-architecture)
-  - [Task Queue Polling Mechanics](#task-queue-polling-mechanics)
-  - [High Availability Recommendations](#high-availability-recommendations)
-- [4. Go SDK Implementation Patterns](#4-go-sdk-implementation-patterns)
-  - [Initializing the Client](#initializing-the-client)
-  - [Defining and Registering Activities](#defining-and-registering-activities)
-  - [Defining and Registering Workflows](#defining-and-registering-workflows)
-  - [Worker Bootstrap](#worker-bootstrap)
-  - [Triggering a Workflow Execution](#triggering-a-workflow-execution)
-- [5. Workflow Determinism & Replay Mechanics](#5-workflow-determinism--replay-mechanics)
-  - [How Event Replay Works](#how-event-replay-works)
-  - [The Determinism Matrix: Forbidden vs Safe Go Primitives](#the-determinism-matrix-forbidden-vs-safe-go-primitives)
-  - [Static Analysis with workflowcheck](#static-analysis-with-workflowcheck)
-  - [Workflow Versioning (workflow.GetVersion)](#workflow-versioning-workflowgetversion)
-- [6. Interacting with Running Workflows](#6-interacting-with-running-workflows)
-  - [Signals (Asynchronous State Mutation)](#signals-asynchronous-state-mutation)
-  - [Queries (Synchronous State Inspection)](#queries-synchronous-state-inspection)
-  - [Signal-With-Start](#signal-with-start)
-  - [Limits and Constraints](#limits-and-constraints)
-- [7. Timeouts, Heartbeats, and Cancellation](#7-timeouts-heartbeats-and-cancellation)
-  - [Activity Timeout Dimensions](#activity-timeout-dimensions)
-  - [Activity Heartbeating](#activity-heartbeating)
-  - [Cancellation vs Termination](#cancellation-vs-termination)
-- [8. Error Handling & Retry Policies](#8-error-handling--retry-policies)
-  - [Default Retry Policy Mechanics](#default-retry-policy-mechanics)
-  - [Non-Retryable Application Errors](#non-retryable-application-errors)
-- [9. Event History, Size Limits & Continue-As-New](#9-event-history-size-limits--continue-as-new)
-  - [Event History Thresholds](#event-history-thresholds)
-  - [Implementing Continue-As-New](#implementing-continue-as-new)
-- [10. Sticky Execution & Performance Optimization](#10-sticky-execution--performance-optimization)
-- [11. Visibility & Advanced Search Attributes](#11-visibility--advanced-search-attributes)
-  - [List Filter Syntax](#list-filter-syntax)
-  - [Custom Search Attributes](#custom-search-attributes)
-- [12. Payload Security: Codecs & Encryption](#12-payload-security-codecs--encryption)
-  - [End-to-End Encryption Flow](#end-to-end-encryption-flow)
-  - [Remote Codec Server Integration](#remote-codec-server-integration)
-- [13. Cluster Services Internals](#13-cluster-services-internals)
-- [14. Polyglot Microservices Orchestration](#14-polyglot-microservices-orchestration)
-- [15. Production Troubleshooting & Debugging Checklist](#15-production-troubleshooting--debugging-checklist)
-- [16. Frequently Asked Questions (FAQ)](#16-frequently-asked-questions-faq)
+1. [Core Concepts](#1-core-concepts)
+2. [Temporal Application Architecture](#2-temporal-application-architecture)
+3. [Workflows](#3-workflows)
+4. [Activities](#4-activities)
+5. [Workers and Task Queues](#5-workers-and-task-queues)
+6. [Interacting with Workflow Executions](#6-interacting-with-workflow-executions)
+7. [Visibility and Search Attributes](#7-visibility-and-search-attributes)
+8. [Timeouts, Heartbeats, and Cancellation](#8-timeouts-heartbeats-and-cancellation)
+9. [Failure Handling and Retry Policies](#9-failure-handling-and-retry-policies)
+10. [Payload Conversion, Compression, and Encryption](#10-payload-conversion-compression-and-encryption)
+11. [Workflow IDs and Retention](#11-workflow-ids-and-retention)
+12. [Timers and Long-Running Workflows](#12-timers-and-long-running-workflows)
+13. [Event History and Continue-As-New](#13-event-history-and-continue-as-new)
+14. [Sticky Execution](#14-sticky-execution)
+15. [Workflow Determinism and Versioning](#15-workflow-determinism-and-versioning)
+16. [Temporal Cluster Services](#16-temporal-cluster-services)
+17. [Polyglot Development](#17-polyglot-development)
+18. [Debugging Notes](#18-debugging-notes)
+19. [Quick Reference](#19-quick-reference)
 
 </details>
 
 ---
 
-## 1. Temporal Platform Architecture
+## 1. Core Concepts
 
-Temporal is a distributed, scalable, durable, and highly available orchestration engine. It abstracts away failure recovery, distributed timers, and state persistence so developers can write complex asynchronous workflows as procedural code.
+### Workflow
 
-### Core Components
+A **Workflow** is a durable function that defines a sequence of steps for a business process. A Workflow can be invoked multiple times and must behave deterministically during replay.
 
-1. **Temporal Client**: The application layer entry point that triggers, signals, and queries workflows over gRPC.
-2. **Temporal Frontend Service**: The stateless API gateway that validates requests, handles rate-limiting, and routes calls.
-3. **History Service**: Maintains execution state, appends events to the immutable Event History, and coordinates workflow timers.
-4. **Matching Service**: Hosts Task Queues and matches queued workflow/activity tasks to polling workers.
-5. **Worker Service**: Internal Temporal cluster background workers executing system-level maintenance workflows.
-6. **Application Workers**: User-managed Go processes that poll Task Queues and execute your application's Workflow and Activity definitions.
+For the same Workflow history, the Workflow code must produce the same sequence of Temporal commands. External calls and other non-deterministic operations should not be performed directly inside Workflow code.
 
-### System Flow Diagram
+### Activity
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Temporal Client (Go)
-    participant Frontend as Temporal Frontend (gRPC)
-    participant Cluster as History & Matching (Cluster)
-    participant Worker as Application Worker (Go)
+An **Activity** represents work that may be non-deterministic or interact with an external system, such as:
 
-    Client->>Frontend: ExecuteWorkflow(ctx, MyWorkflow)
-    Frontend->>Cluster: Persist WorkflowExecutionStarted Event
-    Cluster->>Cluster: Enqueue Workflow Task on TaskQueue
-    Worker->>Cluster: PollWorkflowTaskQueue()
-    Cluster-->>Worker: Deliver Workflow Task
-    Note over Worker: Execute Workflow Code (Deterministic)
-    Worker->>Frontend: RespondWorkflowTaskCompleted (Schedule Activity)
-    Cluster->>Cluster: Enqueue Activity Task on TaskQueue
-    Worker->>Cluster: PollActivityTaskQueue()
-    Cluster-->>Worker: Deliver Activity Task
-    Note over Worker: Execute Activity Code (I/O, APIs)
-    Worker->>Frontend: RespondActivityTaskCompleted (Result)
-    Frontend->>Cluster: Append ActivityCompleted Event
-    Worker->>Cluster: Complete Workflow
-    Cluster-->>Client: Workflow Return Result
-```
+- Calling an API or LLM
+- Reading or writing files
+- Accessing a database
+- Sending an email
+- Processing a payment
 
----
+Activities can be retried and timed out independently from the Workflow.
 
-## 2. Core Concepts: Workflows vs Activities
+### Worker
 
-### Workflows: Durable Execution
+A **Worker** is a process that hosts and executes Workflow and Activity code. Workers continuously poll a Task Queue and accept tasks when they have available capacity.
 
-A **Workflow Definition** is an orchestration function written in Go. Its execution state is saved to the cluster at every step. If the host machine dies, a container restarts, or the network partitions, Temporal recovers the execution state on another worker by replaying its Event History.
+### Task Queue
 
-> [!IMPORTANT]
-> **Workflow Golden Rule**: Workflow code must be purely deterministic. No direct disk I/O, no network calls, no random numbers, and no standard Go concurrency primitives (use `workflow.Go` instead of `go`).
+A **Task Queue** connects the Temporal Cluster to Workers. The cluster places Workflow Tasks and Activity Tasks on a queue, and Workers poll that queue to execute them.
 
-### Activities: Side Effects & I/O
+### Temporal Client
 
-An **Activity Definition** encapsulates non-deterministic operations and side effects:
-- Calling third-party APIs (Stripe, Twilio, OpenAI, REST/gRPC endpoints)
-- Reading or writing to PostgreSQL, Redis, DynamoDB
-- Disk filesystem read/write operations
-- Heavy computational tasks
+A **Temporal Client** starts and interacts with Workflow Executions. It can:
 
-Activities can be retried automatically based on custom exponential backoff policies and independently monitored via heartbeats.
+- Start a Workflow
+- Send a Signal
+- execute a Query
+- Request cancellation or termination
+- Retrieve a Workflow result
 
-### Workflows vs Activities Comparison Matrix
+### Temporal Cluster
 
-| Feature | Workflow | Activity |
-|:---|:---|:---|
-| **Primary Role** | Orchestration & State Coordination | Execution of side effects & I/O |
-| **Execution Guarantee** | Purely deterministic replay | Idempotent or non-deterministic execution |
-| **Timeouts** | Execution & Run timeouts | Start-To-Close, Schedule-To-Close, Heartbeat |
-| **Retries** | Manual or start-configured (Rare) | Exponential backoff retry policies (Default) |
-| **Concurrency** | `workflow.Go`, `workflow.Channel` | Goroutines, worker threads, async tasks |
-| **Duration** | Minutes to years | Seconds to hours |
-| **External Calls** | ❌ Strictly forbidden | ✅ Supported |
+The **Temporal Cluster** manages orchestration and durable execution. It preserves Workflow state through Event History and coordinates task delivery through Task Queues.
 
 ---
 
-## 3. Workers and Task Queues
+## 2. Temporal Application Architecture
 
-### Worker Architecture
+A typical Temporal application contains:
 
-A Temporal Worker is a standalone Go process run by your engineering team. Workers maintain persistent long-polling gRPC connections to the Temporal Cluster.
+1. A **Workflow Definition**
+2. One or more **Activity Definitions**
+3. A **Worker configuration**
+4. A **Client application**
+5. A **Temporal Cluster**
 
-```mermaid
-graph LR
-    subgraph TemporalCluster[Temporal Cluster]
-        TQ_W[Workflow Task Queue]
-        TQ_A[Activity Task Queue]
-    end
+A simplified execution flow is:
 
-    subgraph GoWorkers[Go Worker Fleet]
-        W1[Worker Pod 1]
-        W2[Worker Pod 2]
-        W3[Worker Pod N]
-    end
-
-    TQ_W -.->|Poll & Match| W1
-    TQ_W -.->|Poll & Match| W2
-    TQ_A -.->|Poll & Match| W2
-    TQ_A -.->|Poll & Match| W3
+```text
+Client application
+       |
+       | Start Workflow / Signal / Query
+       v
+Temporal Frontend Service
+       |
+       v
+Temporal Cluster and Task Queue
+       |
+       | Worker polls
+       v
+Worker executes Workflow and Activity code
 ```
 
-### Task Queue Polling Mechanics
-
-- Task Queues are **dynamically created** as soon as an activity/workflow schedules a task or a worker polls for work.
-- Workers can be partitioned to dedicate specific hardware (e.g., GPU nodes, high-memory instances) to specific Task Queues.
-- Backpressure is built-in: if all workers are busy, tasks remain safely queued in Temporal's persistence layer without dropping requests.
-
-### High Availability Recommendations
-
-1. **Minimum 2 Workers per Queue**: Always deploy at least 2 worker replicas across distinct availability zones.
-2. **Graceful Shutdown**: Always capture `os.Interrupt` or `syscall.SIGTERM` using `worker.InterruptCh()` to allow currently running activities to drain or heartbeat before exiting.
-3. **Resource Tuning**: Adjust `worker.Options.MaxConcurrentActivityExecutionSize` and `MaxConcurrentWorkflowTaskExecutionSize` based on available CPU and RAM.
+The Temporal Frontend Service acts as an API gateway. The Web UI, CLI, and SDK clients connect to it, normally over gRPC.
 
 ---
 
-## 4. Go SDK Implementation Patterns
+## 3. Workflows
 
-### Initializing the Client
+A Workflow defines the orchestration logic for a durable process. It may execute multiple Activities sequentially or in parallel.
 
-```go
-package main
+### Registering a Workflow in Go
 
-import (
-	"log"
-
-	"go.temporal.io/sdk/client"
-)
-
-func NewTemporalClient() (client.Client, error) {
-	c, err := client.Dial(client.Options{
-		HostPort:  client.DefaultHostPort, // "localhost:7233"
-		Namespace: client.DefaultNamespace, // "default"
-	})
-	if err != nil {
-		return nil, err
-	}
-	return c, nil
-}
-```
-
-### Defining and Registering Activities
-
-Activities accept a standard Go `context.Context` and strongly typed parameters:
+A Workflow Definition is registered with a Worker:
 
 ```go
-package app
+w := worker.New(client, "my-task-queue", worker.Options{})
+w.RegisterWorkflow(MyWorkflow)
 
-import (
-	"context"
-	"fmt"
-	"time"
-
-	"go.temporal.io/sdk/activity"
-)
-
-type PaymentInput struct {
-	AccountID string  `json:"account_id"`
-	Amount    float64 `json:"amount"`
-}
-
-type PaymentOutput struct {
-	TransactionID string    `json:"transaction_id"`
-	Timestamp     time.Time `json:"timestamp"`
-}
-
-func ProcessPaymentActivity(ctx context.Context, input PaymentInput) (*PaymentOutput, error) {
-	logger := activity.GetLogger(ctx)
-	logger.Info("Processing payment", "AccountID", input.AccountID, "Amount", input.Amount)
-
-	// Simulated external API call
-	if input.Amount <= 0 {
-		return nil, fmt.Errorf("invalid transaction amount: %.2f", input.Amount)
-	}
-
-	return &PaymentOutput{
-		TransactionID: "txn_9837429837",
-		Timestamp:     time.Now().UTC(),
-	}, nil
-}
-```
-
-### Defining and Registering Workflows
-
-Workflows require `workflow.Context` as their first argument:
-
-```go
-package app
-
-import (
-	"time"
-
-	"go.temporal.io/sdk/temporal"
-	"go.temporal.io/sdk/workflow"
-)
-
-type OrderWorkflowInput struct {
-	OrderID   string       `json:"order_id"`
-	Customer  string       `json:"customer"`
-	Payment   PaymentInput `json:"payment"`
-}
-
-func OrderFulfillmentWorkflow(ctx workflow.Context, input OrderWorkflowInput) (string, error) {
-	logger := workflow.GetLogger(ctx)
-	logger.Info("Starting OrderFulfillmentWorkflow", "OrderID", input.OrderID)
-
-	// Configure Activity Execution Options
-	activityOptions := workflow.ActivityOptions{
-		StartToCloseTimeout: 30 * time.Second,
-		RetryPolicy: &temporal.RetryPolicy{
-			InitialInterval:    time.Second * 1,
-			BackoffCoefficient: 2.0,
-			MaximumInterval:    time.Minute * 1,
-			MaximumAttempts:    5,
-		},
-	}
-	ctx = workflow.WithActivityOptions(ctx, activityOptions)
-
-	// Execute Payment Activity
-	var paymentResult PaymentOutput
-	err := workflow.ExecuteActivity(ctx, ProcessPaymentActivity, input.Payment).Get(ctx, &paymentResult)
-	if err != nil {
-		logger.Error("Payment processing failed", "Error", err)
-		return "", err
-	}
-
-	// Durable Sleep: survives restarts and machine reboots
-	logger.Info("Payment confirmed. Waiting 24 hours before follow-up notification...")
-	_ = workflow.Sleep(ctx, 24*time.Hour)
-
-	return paymentResult.TransactionID, nil
-}
-```
-
-### Worker Bootstrap
-
-```go
-package main
-
-import (
-	"log"
-
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/worker"
-
-	"your_project/app"
-)
-
-const TaskQueueName = "ORDER_PROCESSING_TASK_QUEUE"
-
-func main() {
-	c, err := client.Dial(client.Options{})
-	if err != nil {
-		log.Fatalf("Failed to initialize client: %v", err)
-	}
-	defer c.Close()
-
-	w := worker.New(c, TaskQueueName, worker.Options{})
-
-	// Register workflows & activities
-	w.RegisterWorkflow(app.OrderFulfillmentWorkflow)
-	w.RegisterActivity(app.ProcessPaymentActivity)
-
-	// Start worker listener (blocks until interrupt signal)
-	if err := w.Run(worker.InterruptCh()); err != nil {
-		log.Fatalf("Worker exited with error: %v", err)
-	}
-}
-```
-
-### Triggering a Workflow Execution
-
-```go
-func StartOrder(c client.Client, orderID string) (client.WorkflowRun, error) {
-	options := client.StartWorkflowOptions{
-		ID:        "order-" + orderID,
-		TaskQueue: TaskQueueName,
-		// Reject duplicates if an instance is already running
-		WorkflowIDReusePolicy: temporal.WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE,
-	}
-
-	input := app.OrderWorkflowInput{
-		OrderID:  orderID,
-		Customer: "alice@example.com",
-		Payment:  app.PaymentInput{AccountID: "acc_101", Amount: 249.99},
-	}
-
-	run, err := c.ExecuteWorkflow(context.Background(), options, app.OrderFulfillmentWorkflow, input)
-	if err != nil {
-		return nil, err
-	}
-
-	log.Printf("Started workflow with ID: %s, RunID: %s", run.GetID(), run.GetRunID())
-	return run, nil
-}
-```
-
----
-
-## 5. Workflow Determinism & Replay Mechanics
-
-### How Event Replay Works
-
-When a worker receives a Workflow Task, it executes the Go workflow code from line 1. When it hits an activity invocation or timer:
-1. It looks at the **Event History**.
-2. If `ActivityTaskCompleted` or `TimerFired` is present in the history, Temporal returns the recorded result immediately without executing the activity again.
-3. This is how Temporal recovers execution state in-memory after worker crashes.
-
-```mermaid
-flowchart TD
-    Start[Worker Begins Replay] --> CheckHistory{Next Command in History?}
-    CheckHistory -- "Activity Completed" --> SupplyResult[Inject Cached Result from Event History]
-    SupplyResult --> NextCodeLine[Execute Next Line of Code]
-    NextCodeLine --> CheckHistory
-    CheckHistory -- "New Command Scheduled" --> SendCommand[Send Command to Cluster]
-    CheckHistory -- "Command Mismatch (Bug)" --> Panic[Non-Deterministic Error Detected!]
-```
-
-### The Determinism Matrix: Forbidden vs Safe Go Primitives
-
-Writing non-deterministic code in a workflow will cause replay failure:
-
-| Category | ❌ Forbidden in Workflow Code | ✅ Safe Temporal Alternative | Why It Breaks Replay |
-|:---|:---|:---|:---|
-| **Time** | `time.Now()` | `workflow.Now(ctx)` | System clock advances during replay |
-| **Sleeping** | `time.Sleep(10 * time.Second)` | `workflow.Sleep(ctx, 10*time.Second)` | Pauses worker thread; not durable |
-| **Concurrency** | `go myGoroutine()` | `workflow.Go(ctx, myFunc)` | Unmanaged goroutines break event tracking |
-| **Channels** | `make(chan T)` | `workflow.NewChannel(ctx)` | Native channels break determinism |
-| **Map Iteration** | `for k, v := range myMap` | Extract keys into slice, sort, then iterate | Go map iteration order is deliberately randomized |
-| **Randomness** | `rand.Intn(100)`, `uuid.New()` | `workflow.SideEffect` or wrap in Activity | Returns different value on every replay |
-| **External I/O** | `http.Get()`, `sql.Open()` | Execute inside an Activity | Network results vary across runs |
-| **Global State** | Reading/modifying global vars | Keep state inside workflow instance variables | Shared mutable memory introduces race conditions |
-
-### Static Analysis with workflowcheck
-
-Temporal provides an automated linter to catch determinism violations during CI/CD before code merges to production:
-
-```bash
-# Install the workflowcheck linter
-go install go.temporal.io/sdk/contrib/tools/workflowcheck@latest
-
-# Run analysis against your packages
-workflowcheck ./...
-```
-
-### Workflow Versioning (`workflow.GetVersion`)
-
-When business logic changes for active workflows, use `workflow.GetVersion` to protect running executions from replay mismatches:
-
-```go
-var discount float64
-// Identifier: "applyDiscountLogic", minSupported: DefaultVersion (-1), maxSupported: 1
-version := workflow.GetVersion(ctx, "applyDiscountLogic", workflow.DefaultVersion, 1)
-
-if version == workflow.DefaultVersion {
-    // Legacy logic for executions started prior to version 1
-    discount = 0.05
-} else {
-    // New logic for recent executions
-    discount = 0.15
-}
-```
-
----
-
-## 6. Interacting with Running Workflows
-
-### Signals (Asynchronous State Mutation)
-
-Signals allow external systems or other workflows to push messages into a running workflow execution.
-
-```go
-// Define a Signal Name
-const PaymentSignalName = "PaymentReceivedSignal"
-
-type PaymentSignalPayload struct {
-    ReceiptNumber string `json:"receipt_number"`
-}
-
-// In Workflow code:
-signalChan := workflow.GetSignalChannel(ctx, PaymentSignalName)
-
-// Block until signal is received or a timeout expires
-selector := workflow.NewSelector(ctx)
-selector.AddReceive(signalChan, func(c workflow.ReceiveChannel, more bool) {
-    var signal PaymentSignalPayload
-    c.Receive(ctx, &signal)
-    workflow.GetLogger(ctx).Info("Received payment signal", "Receipt", signal.ReceiptNumber)
-})
-selector.Select(ctx)
-```
-
-Sending a Signal from a Client:
-
-```go
-err := client.SignalWorkflow(ctx, workflowID, "", PaymentSignalName, PaymentSignalPayload{
-    ReceiptNumber: "rcpt_4982734",
-})
-```
-
-### Queries (Synchronous State Inspection)
-
-Queries synchronously inspect the in-memory state of a workflow execution without mutating state or appending events to Event History:
-
-```go
-const OrderStatusQuery = "GetOrderStatus"
-
-// Register Query Handler inside Workflow code:
-var currentStatus = "INITIATED"
-
-err := workflow.SetQueryHandler(ctx, OrderStatusQuery, func() (string, error) {
-    return currentStatus, nil
-})
-```
-
-Querying from a Client:
-
-```go
-val, err := client.QueryWorkflow(ctx, workflowID, "", OrderStatusQuery)
+err := w.Run(worker.InterruptCh())
 if err != nil {
     log.Fatal(err)
 }
-var status string
-_ = val.Get(&status)
-fmt.Println("Current Order Status:", status)
 ```
+
+### Workflow Input
+
+In Go, using a struct for Workflow input makes future changes easier to manage:
+
+```go
+type WorkflowInput struct {
+    OrderID string
+    Email   string
+}
+```
+
+Fields can be added more safely than changing a long list of positional parameters. However, data-contract compatibility must still be considered for running and replaying Workflow Executions.
+
+### Workflow Errors
+
+If a Workflow returns an error, the Workflow Execution is marked as failed. Unlike Activities, Workflows do not automatically use an Activity-style Retry Policy unless retry behavior is explicitly configured when starting the Workflow.
+
+---
+
+## 4. Activities
+
+An Activity Definition is typically an exported Go function. Its parameters and return values must be serializable by the configured Data Converter.
+
+```go
+func ChargeCard(ctx context.Context, input PaymentInput) (ChargeStatus, error) {
+    // Call an external payment service.
+    return ChargeStatus{Success: true}, nil
+}
+```
+
+### Registering an Activity
+
+```go
+w.RegisterActivity(ChargeCard)
+```
+
+### Executing an Activity from a Workflow
+
+```go
+options := workflow.ActivityOptions{
+    StartToCloseTimeout: 30 * time.Second,
+}
+
+ctx = workflow.WithActivityOptions(ctx, options)
+
+var result ChargeStatus
+err := workflow.ExecuteActivity(ctx, ChargeCard, input).Get(ctx, &result)
+if err != nil {
+    return err
+}
+```
+
+An Activity must be invoked by Workflow code. A Worker that has the Activity registered must poll the relevant Task Queue.
+
+### Asynchronous Activity Completion
+
+Asynchronous Activity Completion is useful when an Activity delegates work to an external system and the result will arrive later. The Activity can return without completing, and the external system can complete it later by using its Activity task token.
+
+Use a Signal instead when the interaction is better represented as an external message that changes or advances the Workflow state.
+
+---
+
+## 5. Workers and Task Queues
+
+Workers poll Task Queues and execute application code. Task Queues are created dynamically when first used.
+
+### Availability Recommendation
+
+For production workloads, run at least two Worker processes for each important Task Queue. If one Worker crashes, another Worker can continue polling and process new or retried tasks.
+
+### Responsibilities
+
+| Component | Responsibility |
+|---|---|
+| Client | Requests Workflow execution and retrieves results |
+| Temporal Cluster | Orchestrates durable execution |
+| Task Queue | Routes tasks from the cluster to Workers |
+| Worker | Executes Workflow and Activity code |
+
+---
+
+## 6. Interacting with Workflow Executions
+
+### Signals
+
+A **Signal** is an asynchronous message sent to a running Workflow Execution. It can update state or control the execution.
+
+Example: an order-processing Workflow receives a `PaymentReceived` Signal and then proceeds to ship the order.
+
+Signals are:
+
+- Defined and handled in Workflow code
+- Sent from a Temporal Client, CLI, or another Workflow
+- Asynchronous
+
+Workflows can also send Signals to other Workflows. These are commonly called **External Signals**.
 
 ### Signal-With-Start
 
-Guarantees atomic start-or-signal semantics:
-- If the workflow execution with the specified Workflow ID is already running, the Signal is delivered.
-- If it does not exist, it starts a new workflow instance and immediately passes the Signal.
+Sending a normal Signal requires a Workflow Execution to exist. **Signal-With-Start** handles the case where the Workflow might not be running:
 
-```go
-run, err := client.SignalWithStartWorkflow(ctx, workflowID, signalName, signalArg, options, WorkflowFunc, workflowArgs)
-```
+- If the Workflow is running, Temporal sends the Signal.
+- If the Workflow is not running, Temporal starts it and then sends the Signal.
 
-### Limits and Constraints
+### Signal Constraints
 
-- **Pending Outgoing Signals**: Maximum 2,000 pending outgoing signal requests per execution.
-- **Received Signals Limit**: Recommended maximum 10,000 received signals per single run. Exceeding this requires using **Continue-As-New**.
+The notes record these important limits:
 
----
+- Up to **2,000 pending outgoing Signal requests** per Workflow Execution
+- Up to **10,000 received Signals** during a single Workflow Execution
+- Event History limits still apply
 
-## 7. Timeouts, Heartbeats, and Cancellation
+Batching related messages into one Signal can reduce Signal and Event History growth.
 
-### Activity Timeout Dimensions
+> Limits can change by Temporal version or service configuration. Verify them in the current documentation.
 
-Temporal provides 4 distinct timeout options to prevent stuck tasks:
+### Queries
 
-```mermaid
-gantt
-    title Temporal Activity Timeout Lifecycle
-    dateFormat  X
-    axisFormat %s sec
+A **Query** synchronously reads the internal state of a Workflow Execution without changing it.
 
-    section ScheduleToClose
-    Total Allowed Execution Time (Inc. Retries & Queue) :0, 80
+Typical uses include:
 
-    section ScheduleToStart
-    Task Waiting in Queue :0, 15
+- Reading the current order status
+- Reporting completion percentage
+- Checking how many Activities have completed
+- Inspecting state before a long-running Workflow finishes
 
-    section StartToClose
-    Attempt 1 (Fails) :15, 35
-    Attempt 2 (Succeeds) :45, 70
+Queries may also be issued against a closed Workflow Execution when a compatible Worker is available to process the Query.
 
-    section HeartbeatTimeout
-    Heartbeat Window :15, 25
-```
+### Signals vs. Queries
 
-1. **`StartToCloseTimeout`** (*Required if ScheduleToClose is omitted*): Max time allowed for a single activity attempt.
-2. **`ScheduleToCloseTimeout`**: Total end-to-end time allowed from initial scheduling through all retries until final completion.
-3. **`ScheduleToStartTimeout`**: Max time a task can linger in the Task Queue waiting for an available worker before timing out.
-4. **`HeartbeatTimeout`**: Max permissible delay between heartbeats from an activity. Ideal for detecting worker crashes during long-running tasks.
-
-### Activity Heartbeating
-
-For operations longer than a few seconds (file processing, ML inference, database migrations):
-
-```go
-func HeavyBatchProcessActivity(ctx context.Context, totalBatches int) error {
-    for i := 1; i <= totalBatches; i++ {
-        // Perform chunk of work
-        processBatch(i)
-
-        // Record Heartbeat with progress payload
-        activity.RecordHeartbeat(ctx, i)
-
-        // Check for cancellation signal delivered through heartbeat
-        select {
-        case <-ctx.Done():
-            return ctx.Err()
-        default:
-        }
-    }
-    return nil
-}
-```
-
-### Cancellation vs Termination
-
-- **Cancellation (`client.CancelWorkflow`)**: A graceful stop request. The workflow context is canceled, triggering `<-ctx.Done()`. Workflows can catch this to execute compensation logic (e.g., Saga pattern rollback).
-- **Termination (`client.TerminateWorkflow`)**: A hard, immediate kill. The workflow execution stops instantly. Cleanup logic cannot run.
+| Feature | Signal | Query |
+|---|---|---|
+| Purpose | Change Workflow state | Read Workflow state |
+| Operation | Asynchronous | Synchronous |
+| Mutates state | Yes | No |
+| Requires Workflow code | Signal handler | Query handler |
 
 ---
 
-## 8. Error Handling & Retry Policies
+## 7. Visibility and Search Attributes
 
-### Default Retry Policy Mechanics
+**Visibility** refers to the Temporal subsystems and APIs used to view, filter, and search Workflow Executions.
 
-Activities use an exponential backoff policy by default:
+The following use Visibility data:
+
+- Temporal Web UI
+- Temporal CLI
+- Temporal SDKs
+
+### List Filter
+
+A SQL-like List Filter can be used to find Workflow Executions:
+
+```text
+WorkflowType = "pizzaWorkflow" AND ExecutionStatus = "Running"
+```
+
+CLI example:
+
+```bash
+temporal workflow list \
+  --query 'WorkflowType = "pizzaWorkflow" AND ExecutionStatus = "Running"'
+```
+
+### Search Attributes
+
+Search Attributes organize Workflow Executions and make them searchable.
+
+Examples of default Search Attributes include:
+
+- `WorkflowType`
+- `ExecutionStatus`
+- `StartTime`
+- `CloseTime`
+
+Custom Search Attributes are configured per Namespace. Supported types include:
+
+- `Bool`
+- `Datetime`
+- `Double`
+- `Int`
+- `Keyword`
+- `KeywordList`
+- `Text`
+
+---
+
+## 8. Timeouts, Heartbeats, and Cancellation
+
+### Activity Heartbeats
+
+An Activity Heartbeat is a periodic progress notification sent from a long-running Activity to the Temporal Service.
+
+Heartbeats help Temporal:
+
+- Detect an unresponsive Activity
+- Record Activity progress
+- Deliver cancellation requests
+- Allow retries to resume from recorded progress
+
+The notes record a default heartbeat throttle interval of **30 seconds** and a maximum throttle interval of **60 seconds**, both configurable through Worker options.
+
+### Activity Timeouts
+
+#### Start-to-Close Timeout
+
+The maximum time allowed for a single Activity execution attempt, from when a Worker starts it until that attempt completes.
+
+#### Schedule-to-Close Timeout
+
+The maximum total time from when an Activity is scheduled until it completes, including queueing time and retries.
+
+#### Schedule-to-Start Timeout
+
+The maximum time an Activity Task may wait in a Task Queue before a Worker starts it.
+
+#### Heartbeat Timeout
+
+The maximum permitted time between Activity Heartbeats. It is useful for detecting stalled long-running Activities.
+
+Activity timeouts are configured using `workflow.ActivityOptions`:
 
 ```go
-type RetryPolicy struct {
-    InitialInterval    time.Duration // Default: 1s
-    BackoffCoefficient float64       // Default: 2.0
-    MaximumInterval    time.Duration // Default: 100 * InitialInterval
-    MaximumAttempts    int32         // Default: 0 (Unlimited)
-    NonRetryableErrorTypes []string  // Explicit error names to skip
+options := workflow.ActivityOptions{
+    StartToCloseTimeout:    30 * time.Second,
+    ScheduleToCloseTimeout: 5 * time.Minute,
+    HeartbeatTimeout:       10 * time.Second,
 }
 ```
 
-### Non-Retryable Application Errors
+At least one of `StartToCloseTimeout` or `ScheduleToCloseTimeout` must be configured.
 
-Errors indicating business validation failures or bad inputs should never be retried:
+### Workflow Cancellation
+
+Cancellation requests a graceful stop and gives Workflow and Activity code an opportunity to perform cleanup.
+
+### Workflow Termination
+
+Termination stops a Workflow Execution immediately. It does not allow the Workflow to run cleanup logic.
+
+---
+
+## 9. Failure Handling and Retry Policies
+
+### General Failure Categories
+
+Failures can be considered:
+
+1. **Transient**: temporary and likely to succeed quickly on retry
+2. **Intermittent**: occurs unpredictably and may succeed after retry
+3. **Permanent**: should not be retried without changing the input or code
+
+### Temporal Failure Types
+
+Common failure types include:
+
+- `ApplicationFailure`
+- `CanceledFailure`
+- `TerminatedFailure`
+- `TimeoutFailure`
+- `ServerFailure`
+- `ChildWorkflowFailure`
+- `ActivityFailure`
+- `WorkflowExecutionAlreadyStarted`
+
+### Default Activity Retry Policy
+
+Temporal retries failed Activities according to their Retry Policy.
+
+| Setting | Recorded default | Meaning |
+|---|---:|---|
+| Initial Interval | 1 second | Delay before the first retry |
+| Backoff Coefficient | 2.0 | Multiplier for subsequent delays |
+| Maximum Interval | 100 × initial interval | Upper bound for retry delay |
+| Maximum Attempts | 0 | Interpreted as unlimited attempts |
+| Non-Retryable Errors | None | Error types that must not be retried |
+
+With an initial interval of one second and a backoff coefficient of `2.0`, delays grow approximately as follows:
+
+```text
+1s, 2s, 4s, 8s, 16s, 32s, 64s, 100s, 100s, ...
+```
+
+### Non-Retryable Application Error in Go
 
 ```go
-if userBalance < transactionCost {
-    return temporal.NewNonRetryableApplicationError(
-        "insufficient funds in user account",
-        "InsufficientFundsError",
-        nil, // Optional details
+if len(address.CardNumber) != 16 {
+    return chargeStatus, temporal.NewNonRetryableApplicationError(
+        "Credit card number must contain 16 digits",
+        "CreditCardError",
+        nil,
     )
 }
 ```
 
+Use a non-retryable error when retrying cannot resolve the problem, such as invalid input.
+
 ---
 
-## 9. Event History, Size Limits & Continue-As-New
+## 10. Payload Conversion, Compression, and Encryption
 
-### Event History Thresholds
+Temporal Data Converters serialize and deserialize data sent between:
 
-Every action (activity schedule, timer, signal) is logged to the Event History.
+- Clients
+- Workflows
+- Activities
+- The Temporal Service
 
-> [!WARNING]
-> **Hard Limits**:
-> - **10,240 Events or 10 MB**: Temporal emits a cluster warning log.
-> - **51,200 Events or 50 MB**: The cluster **forcibly terminates** the Workflow Execution.
-> - **Production Target**: Keep history below **10,000 events and 10 MB**.
+Payloads may represent JSON, Protocol Buffers, byte arrays, or null values.
 
-### Implementing Continue-As-New
+### Custom Payload Codec
 
-When writing long-running loops or entity workflows, periodically roll over state using `Continue-As-New`:
+A custom Payload Codec can provide:
+
+- Encryption and decryption
+- Compression and decompression
+- Custom handling for payload representations
+
+Encryption keys should be stored in a secure key-management system such as HashiCorp Vault, AWS KMS, Google Cloud KMS, or Azure Key Vault rather than embedded in application code.
+
+### Remote Codec Server
+
+The Temporal Web UI and CLI can call a remote Codec Server to decode payloads. A decode endpoint may resemble:
+
+```text
+POST http://codec.server/your-namespace/decode
+```
+
+The request and response contain a JSON object with a `payloads` array. The server processes those payloads through the configured Payload Codec before returning them.
+
+> Protect a Codec Server with authentication, authorization, TLS, and network controls because it can access sensitive plaintext data.
+
+---
+
+## 11. Workflow IDs and Retention
+
+### Namespaces
+
+A Namespace provides logical isolation within a Temporal Cluster. Different teams or applications can own separate Namespaces.
+
+### Workflow ID
+
+A Workflow ID identifies a Workflow Execution within a Namespace. Temporal manages uniqueness according to the configured ID conflict and reuse policies.
+
+The notes list the following Workflow ID Reuse Policy values:
+
+- `WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE`
+- `WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY`
+- `WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE`
+- `WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING`
+
+> Temporal SDKs and API versions may distinguish Workflow ID Reuse Policy from Workflow ID Conflict Policy. Check the current SDK documentation when configuring new executions.
+
+### Retention Period
+
+After a Workflow Execution closes, its history is retained according to the Namespace retention period. The notes indicate a typical range of **1 to 30 days**.
+
+Retention applies after a Workflow closes. It does not limit how long an active Workflow may run.
+
+Self-hosted clusters can configure archival for longer-term storage.
+
+---
+
+## 12. Timers and Long-Running Workflows
+
+Temporal Timers allow Workflow code to wait durably without consuming a Worker thread for the entire waiting period. Timer state is maintained by the Temporal Service.
+
+Typical use case:
+
+- Send an onboarding email after one day
+- Send a follow-up email after one week
+
+### Sleep in Go
 
 ```go
-func InfinitePollerWorkflow(ctx workflow.Context, iterationCount int) error {
-    // Check current history event count
-    info := workflow.GetInfo(ctx)
-    if info.GetCurrentHistoryLength() > 2000 {
-        // Cleanly reset history while keeping the same WorkflowID
-        return workflow.NewContinueAsNewError(ctx, InfinitePollerWorkflow, iterationCount)
-    }
+err := workflow.Sleep(ctx, 24*time.Hour)
+if err != nil {
+    return err
+}
+```
 
-    // Do periodic work...
-    _ = workflow.Sleep(ctx, 10*time.Minute)
+### Timer in Go
 
-    return workflow.NewContinueAsNewError(ctx, InfinitePollerWorkflow, iterationCount+1)
+```go
+timer := workflow.NewTimer(ctx, 24*time.Hour)
+if err := timer.Get(ctx, nil); err != nil {
+    return err
+}
+```
+
+Use Temporal's Workflow APIs instead of standard time or sleep functions so that timer behavior is recorded and replay-safe.
+
+---
+
+## 13. Event History and Continue-As-New
+
+A Workflow Execution's **Event History** records what happened during the execution, including commands, task transitions, Signals, timers, and Activity results.
+
+Every event includes at least:
+
+- Event ID
+- Event time
+- Event type
+
+### Recorded Limits
+
+The notes record:
+
+- Warning around **10,240 events**
+- Termination at **51,200 events**
+- Maximum history size of approximately **50 MB**
+- Recommended operating target below approximately **10,000 events or 10 MB**
+
+> Verify exact limits for the target Temporal Cloud account or self-hosted cluster.
+
+### Continue-As-New
+
+When a Workflow has a large or continually growing history, use **Continue-As-New**. It closes the current run and starts a new run with a fresh Event History while preserving the logical Workflow ID.
+
+Common uses include:
+
+- Entity Workflows
+- Polling loops
+- High-volume Signal processing
+- Periodic processing that has no natural end
+
+---
+
+## 14. Sticky Execution
+
+Sticky Execution attempts to route subsequent Workflow Tasks to the same Worker that processed earlier tasks for that Workflow Execution.
+
+The Temporal Service creates a Worker-specific **Sticky Queue**. Reusing the same Worker can improve performance because the Worker may retain the Workflow's in-memory state and avoid a complete replay.
+
+If the Worker does not start the Workflow Task from the Sticky Queue within the configured timeout, recorded here as five seconds by default, Temporal disables stickiness for that task and reschedules it on the original Task Queue.
+
+---
+
+## 15. Workflow Determinism and Versioning
+
+### History Replay
+
+Temporal recovers Workflow state by replaying Event History. During replay, Workflow code must generate commands that are compatible with the recorded events.
+
+Examples of command-to-event relationships include:
+
+```text
+Execute Activity
+  -> ActivityTaskScheduled
+  -> ActivityTaskStarted
+  -> ActivityTaskCompleted
+
+Start Timer
+  -> TimerStarted
+  -> TimerFired or TimerCanceled
+```
+
+### Non-Deterministic Code
+
+A Workflow can become non-deterministic if it directly uses:
+
+- Random values
+- Current system time
+- Direct network or database calls
+- Mutable global state
+- Non-deterministic iteration order
+
+For example, conditionally scheduling a timer based on an unrecorded random number could cause replay to produce a different command sequence.
+
+### Code Changes That May Cause Non-Determinism
+
+Potentially unsafe changes include:
+
+- Removing or reordering an Activity command
+- Adding or removing a timer in an already-executed path
+- Changing certain Activity Options
+- Changing a Retry Policy in a replay-incompatible way
+- Modifying branching logic for existing executions
+
+Use Temporal's versioning mechanisms and Worker Deployment features to maintain compatibility for running Workflow Executions.
+
+### Workflow Static Analysis for Go
+
+The Workflow Check tool can help detect some non-deterministic Go code:
+
+```bash
+go install go.temporal.io/sdk/contrib/tools/workflowcheck@latest
+```
+
+### Reset
+
+If a bad deployment produces non-deterministic failures, Temporal Reset can create a new run from a selected point in the Event History.
+
+Reset does not simply continue from the Worker's current in-memory position. Understand the selected reset point and the possibility of repeated side effects before using it.
+
+---
+
+## 16. Temporal Cluster Services
+
+A self-hosted Temporal Cluster includes these main services:
+
+### Frontend Service
+
+- Receives SDK, CLI, and Web UI requests
+- Validates and routes inbound calls
+- Acts as the API gateway for the cluster
+
+### History Service
+
+- Maintains Workflow Execution state
+- Records Event History
+- Processes Workflow state transitions
+
+### Matching Service
+
+- Manages Task Queues
+- Matches Workflow and Activity Tasks with polling Workers
+
+### Worker Service
+
+- Runs internal Temporal system Workflows
+- Does not execute application Workflow or Activity code
+
+A production deployment may also include:
+
+- A load balancer or ingress
+- A supported persistence database
+- Elasticsearch or another supported Visibility store, depending on deployment mode
+- Monitoring and dashboards, such as Prometheus and Grafana
+
+---
+
+## 17. Polyglot Development
+
+Temporal supports polyglot applications. Different parts of one application can use different SDK languages.
+
+Example:
+
+- A TypeScript Client starts a Workflow
+- The Workflow is written in Go
+- The Workflow invokes an Activity written in Java
+
+This setup requires:
+
+- A Go Worker to execute the Workflow code
+- A Java Worker to execute the Activity code
+- Compatible Task Queue and payload contracts
+
+Run multiple instances of each Worker type across failure domains to improve availability and scalability.
+
+---
+
+## 18. Debugging Notes
+
+### Worker Appears Active After Shutdown
+
+After a Worker is stopped, the Web UI may still temporarily show recent poller information. It can display Workers that polled within the previous few minutes rather than only currently active processes.
+
+If no compatible Worker is polling:
+
+- Tasks remain in the Task Queue
+- Schedule-to-Start latency increases
+- The Task Queue backlog grows
+
+### Debugging Checklist
+
+1. Confirm that the Worker is connected to the correct Temporal address and Namespace.
+2. Confirm that the Worker polls the expected Task Queue.
+3. Confirm that the required Workflow and Activities are registered.
+4. Check Worker logs for authentication, TLS, or gRPC failures.
+5. Inspect the Workflow Event History in the Web UI.
+6. Check pending tasks and Task Queue pollers.
+7. Verify Activity timeout and Retry Policy settings.
+8. Check for non-deterministic replay errors after deployments.
+9. Confirm that payload codecs and Data Converters match between Clients and Workers.
+
+---
+
+## 19. Quick Reference
+
+### When to Use Each Feature
+
+| Requirement | Temporal feature |
+|---|---|
+| Execute non-deterministic or external work | Activity |
+| Send an asynchronous state-changing message | Signal |
+| Read Workflow state synchronously | Query |
+| Signal a Workflow that might not exist | Signal-With-Start |
+| Wait durably | Workflow Timer or `workflow.Sleep` |
+| Detect progress in a long Activity | Heartbeat |
+| Bound Activity execution time | Activity Timeout |
+| Recover from transient Activity failures | Retry Policy |
+| Avoid unbounded Event History | Continue-As-New |
+| Search Workflow Executions | Visibility and Search Attributes |
+| Protect payload contents | Custom Payload Codec |
+| Safely evolve long-running Workflow code | Workflow versioning/deployment controls |
+
+### Core Go SDK Flow
+
+```go
+// 1. Create a Temporal client.
+c, err := client.Dial(client.Options{})
+if err != nil {
+    log.Fatal(err)
+}
+defer c.Close()
+
+// 2. Create a Worker for a Task Queue.
+w := worker.New(c, "my-task-queue", worker.Options{})
+
+// 3. Register Workflow and Activity definitions.
+w.RegisterWorkflow(MyWorkflow)
+w.RegisterActivity(MyActivity)
+
+// 4. Start polling and execute tasks.
+err = w.Run(worker.InterruptCh())
+if err != nil {
+    log.Fatal(err)
 }
 ```
 
 ---
 
-## 10. Sticky Execution & Performance Optimization
+## Suggested Repository Description
 
-Temporal implements **Sticky Execution** to minimize latency:
-1. When a worker completes a workflow task, Temporal assigns a temporary worker-specific **Sticky Queue** to that workflow execution.
-2. Subsequent tasks are routed to the same worker process.
-3. The worker reuses its in-memory cached workflow state instead of replaying the entire Event History from scratch.
-4. Default sticky queue timeout is **5 seconds**. If the worker does not respond within this window, the task falls back to the main Task Queue.
+> Structured learning notes for Temporal, covering Workflows, Activities, Workers, Task Queues, Signals, Queries, Visibility, retries, timeouts, Event History, determinism, security, and cluster architecture, with Go SDK examples.
 
----
+## Disclaimer
 
-## 11. Visibility & Advanced Search Attributes
-
-### List Filter Syntax
-
-Temporal provides SQL-like querying across executions in the CLI and Web UI:
-
-```sql
-WorkflowType = "OrderFulfillmentWorkflow" 
-  AND ExecutionStatus = "Running" 
-  AND StartTime > "2026-01-01T00:00:00Z"
-```
-
-CLI list command:
-
-```bash
-temporal workflow list --query 'WorkflowType = "OrderFulfillmentWorkflow" AND ExecutionStatus = "Running"'
-```
-
-### Custom Search Attributes
-
-Namespaces support custom indexed attributes (`Bool`, `Datetime`, `Double`, `Int`, `Keyword`, `KeywordList`, `Text`):
-
-```bash
-# Add custom attribute via Temporal CLI
-temporal operator search-attribute create --name CustomerID --type Keyword
-```
-
-Setting attributes in Go code:
-
-```go
-options := client.StartWorkflowOptions{
-    ID:        "order-123",
-    TaskQueue: "ORDERS",
-    SearchAttributes: map[string]interface{}{
-        "CustomerID": "cust_823749283",
-    },
-}
-```
-
----
-
-## 12. Payload Security: Codecs & Encryption
-
-### End-to-End Encryption Flow
-
-To comply with HIPAA, GDPR, or PCI-DSS, raw workflow inputs and outputs can be encrypted on client/worker machines before transmitting payloads to the Temporal Server.
-
-```mermaid
-flowchart LR
-    subgraph WorkerClient[Your Secure Perimeter]
-        ClientApp[Client / Worker]
-        Codec[Custom Payload Codec]
-    end
-
-    subgraph TemporalCluster[Temporal Server]
-        Storage[(Event History)]
-    end
-
-    ClientApp -->|Plaintext Data| Codec
-    Codec -->|AES-GCM Encrypted Payload| Storage
-    Storage -->|Encrypted Payload| Codec
-    Codec -->|Decrypted Plaintext| ClientApp
-```
-
-### Remote Codec Server Integration
-
-When payloads are encrypted, the Temporal Web UI cannot inspect inputs/outputs. A **Remote Codec Server** solves this:
-1. You deploy a small HTTP service inside your private VPC.
-2. The Codec Server exposes a `/decode` endpoint.
-3. Temporal Web UI / CLI authenticates via OAuth2 / mTLS and requests payload decoding on-the-fly for authorized engineers.
-
----
-
-## 13. Cluster Services Internals
-
-| Service Name | Architecture Role | Scaling Profile |
-|:---|:---|:---|
-| **Frontend Service** | API Gateway (gRPC), authn/authz, rate-limiting, routing | Stateless; scale horizontally with traffic |
-| **History Service** | Sharded execution state management, timer scheduling, history persistence | Stateful sharding (partitioned by Workflow ID) |
-| **Matching Service** | Task queue dispatch, matching tasks to worker pollers | Scaled based on task queue count and throughput |
-| **Worker Service** | Executes internal cluster system workflows (e.g., archival) | Scaled automatically |
-| **Persistence Store** | Backed by PostgreSQL, MySQL, Cassandra, or SQLite (dev) | Scaled according to storage and IOPS limits |
-
----
-
-## 14. Polyglot Microservices Orchestration
-
-Temporal is language-agnostic across its official SDKs:
-- **Go SDK**: Ideal for high-throughput, latency-critical orchestration and workers.
-- **TypeScript / Node.js**: Ideal for web services and frontend-driven backends.
-- **Python SDK**: Ideal for AI/ML workflows, data engineering, and LLM pipelines.
-- **Java SDK**: Enterprise services and legacy system integration.
-
-A single workflow written in Go can schedule an activity written in Python that runs on a GPU worker, then schedule another activity in TypeScript.
-
----
-
-## 15. Production Troubleshooting & Debugging Checklist
-
-If workflows are stuck or failing, follow this checklist:
-
-- [ ] **Poller Status**: Confirm at least one worker is actively polling the specific `TaskQueue` shown in the Web UI.
-- [ ] **Namespace Verification**: Verify that client and worker are connecting to the same cluster endpoint and namespace.
-- [ ] **Type Registration**: Verify that all Workflow and Activity functions are registered on the worker prior to calling `w.Run()`.
-- [ ] **Non-Determinism Errors**: Check worker logs for `UnhandledCommand` or replay panics. Use `workflowcheck` to audit recent changes.
-- [ ] **Timeout Misconfiguration**: Verify `StartToCloseTimeout` is configured. If unconfigured, activities might hang indefinitely if a worker crashes.
-- [ ] **Event History Spikes**: Check if history length exceeds 10,000 events. Refactor with `Continue-As-New`.
-- [ ] **Data Converter / Codec Alignment**: Verify that both the client starting the workflow and the worker executing it share identical Data Converters and Codec configurations.
-
----
-
-## 16. Frequently Asked Questions (FAQ)
-
-### What is the primary difference between a Temporal Workflow and an Activity?
-A **Workflow** manages the overall state and orchestration flow and must be purely deterministic so it can be replayed safely from Event History. An **Activity** performs side effects (API calls, database queries, file access) and can fail, timeout, and retry independently.
-
-### Why does Temporal require Workflows to be deterministic?
-Temporal does not persist running thread memory. When a worker restarts or crashes, Temporal reconstructs the workflow's state by replaying its historical events from line 1. If code uses non-deterministic primitives (e.g., `time.Now()`, random numbers, unmanaged goroutines), re-execution would produce different commands, corrupting execution integrity.
-
-### What happens when Event History reaches 51,200 events?
-The Temporal Cluster forcibly terminates the workflow execution to prevent unbounded memory and database degradation. To avoid this, workflows expected to run indefinitely (loops, entity workflows) must periodically call `Continue-As-New` before approaching 10,000 events.
-
-### How does Temporal compare to message queues like Kafka or RabbitMQ?
-Message queues provide point-to-point asynchronous message delivery but require you to manually manage state machines, retry counters, distributed timers, error recovery, and race conditions. Temporal provides complete end-to-end orchestration, guaranteed state persistence, built-in distributed timers, and procedural execution logic.
-
-### Can I use Goroutines inside a Go Workflow?
-Do not use standard Go `go func()` routines. Instead, use `workflow.Go(ctx, func(ctx workflow.Context) { ... })`. Temporal's wrapper maintains cooperative scheduling and deterministic execution tracking.
-
----
-
-## Contributing
-
-Contributions, issues, and feature additions are welcome! Please feel free to open a Pull Request.
-
-## License
-
-This project is open-source under the [MIT License](https://github.com/rishabh625/temporal-go-handbook/blob/main/LICENSE).
+These notes were reorganized from personal study material. Temporal APIs, defaults, limits, and recommended deployment practices can change. Validate production decisions against the documentation for the Temporal Server, Temporal Cloud, CLI, and SDK versions in use.
