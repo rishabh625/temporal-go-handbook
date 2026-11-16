@@ -657,6 +657,33 @@ A production deployment may also include:
 - Elasticsearch or another supported Visibility store, depending on deployment mode
 - Monitoring and dashboards, such as Prometheus and Grafana
 
+### System Flow Diagram
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as Temporal Client (Go)
+    participant Frontend as Temporal Frontend (gRPC)
+    participant Cluster as History & Matching (Cluster)
+    participant Worker as Application Worker (Go)
+
+    Client->>Frontend: ExecuteWorkflow(ctx, MyWorkflow)
+    Frontend->>Cluster: Persist WorkflowExecutionStarted Event
+    Cluster->>Cluster: Enqueue Workflow Task on TaskQueue
+    Worker->>Cluster: PollWorkflowTaskQueue()
+    Cluster-->>Worker: Deliver Workflow Task
+    Note over Worker: Execute Workflow Code (Deterministic)
+    Worker->>Frontend: RespondWorkflowTaskCompleted (Schedule Activity)
+    Cluster->>Cluster: Enqueue Activity Task on TaskQueue
+    Worker->>Cluster: PollActivityTaskQueue()
+    Cluster-->>Worker: Deliver Activity Task
+    Note over Worker: Execute Activity Code (I/O, APIs)
+    Worker->>Frontend: RespondActivityTaskCompleted (Result)
+    Frontend->>Cluster: Append ActivityCompleted Event
+    Worker->>Cluster: Complete Workflow
+    Cluster-->>Client: Workflow Return Result
+```
+
 ---
 
 ## 17. Polyglot Development
