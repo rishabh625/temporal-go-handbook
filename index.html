@@ -219,6 +219,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -226,7 +228,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Temporal Go SDK Handbook" class="md-nav__button md-logo" aria-label="Temporal Go SDK Handbook" data-md-component="logo">
       
@@ -316,28 +320,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#quick-reference-tldr-cheat-sheet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Reference / TL;DR Cheat Sheet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Table of Contents
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#1-temporal-platform-architecture" class="md-nav__link">
@@ -1031,731 +1013,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#quick-reference-tldr-cheat-sheet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Reference / TL;DR Cheat Sheet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Table of Contents
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-temporal-platform-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Temporal Platform Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Temporal Platform Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Components
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#system-flow-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System Flow Diagram
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-core-concepts-workflows-vs-activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Core Concepts: Workflows vs Activities
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Core Concepts: Workflows vs Activities">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#workflows-durable-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workflows: Durable Execution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activities-side-effects-io" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Activities: Side Effects &amp; I/O
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workflows-vs-activities-comparison-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workflows vs Activities Comparison Matrix
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-workers-and-task-queues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Workers and Task Queues
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Workers and Task Queues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#worker-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Worker Architecture
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-queue-polling-mechanics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task Queue Polling Mechanics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#high-availability-recommendations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        High Availability Recommendations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-go-sdk-implementation-patterns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Go SDK Implementation Patterns
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Go SDK Implementation Patterns">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#initializing-the-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initializing the Client
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-and-registering-activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining and Registering Activities
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-and-registering-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining and Registering Workflows
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#worker-bootstrap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Worker Bootstrap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triggering-a-workflow-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Triggering a Workflow Execution
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-workflow-determinism-replay-mechanics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Workflow Determinism &amp; Replay Mechanics
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Workflow Determinism &amp; Replay Mechanics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-event-replay-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How Event Replay Works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-determinism-matrix-forbidden-vs-safe-go-primitives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Determinism Matrix: Forbidden vs Safe Go Primitives
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#static-analysis-with-workflowcheck" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Static Analysis with workflowcheck
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workflow-versioning-workflowgetversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workflow Versioning (workflow.GetVersion)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-interacting-with-running-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Interacting with Running Workflows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Interacting with Running Workflows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#signals-asynchronous-state-mutation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signals (Asynchronous State Mutation)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#queries-synchronous-state-inspection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Queries (Synchronous State Inspection)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signal-with-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signal-With-Start
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limits-and-constraints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Limits and Constraints
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-timeouts-heartbeats-and-cancellation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Timeouts, Heartbeats, and Cancellation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Timeouts, Heartbeats, and Cancellation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#activity-timeout-dimensions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Activity Timeout Dimensions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activity-heartbeating" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Activity Heartbeating
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cancellation-vs-termination" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cancellation vs Termination
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-error-handling-retry-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Error Handling &amp; Retry Policies
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Error Handling &amp; Retry Policies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#default-retry-policy-mechanics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Default Retry Policy Mechanics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#non-retryable-application-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Non-Retryable Application Errors
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-event-history-size-limits-continue-as-new" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Event History, Size Limits &amp; Continue-As-New
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. Event History, Size Limits &amp; Continue-As-New">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#event-history-thresholds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Event History Thresholds
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementing-continue-as-new" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implementing Continue-As-New
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-sticky-execution-performance-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Sticky Execution &amp; Performance Optimization
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-visibility-advanced-search-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Visibility &amp; Advanced Search Attributes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="11. Visibility &amp; Advanced Search Attributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#list-filter-syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        List Filter Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-search-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Search Attributes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-payload-security-codecs-encryption" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. Payload Security: Codecs &amp; Encryption
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="12. Payload Security: Codecs &amp; Encryption">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#end-to-end-encryption-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        End-to-End Encryption Flow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remote-codec-server-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Remote Codec Server Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-cluster-services-internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        13. Cluster Services Internals
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-polyglot-microservices-orchestration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        14. Polyglot Microservices Orchestration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-production-troubleshooting-debugging-checklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        15. Production Troubleshooting &amp; Debugging Checklist
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#16-frequently-asked-questions-faq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        16. Frequently Asked Questions (FAQ)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="16. Frequently Asked Questions (FAQ)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-the-primary-difference-between-a-temporal-workflow-and-an-activity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the primary difference between a Temporal Workflow and an Activity?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-does-temporal-require-workflows-to-be-deterministic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why does Temporal require Workflows to be deterministic?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-happens-when-event-history-reaches-51200-events" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What happens when Event History reaches 51,200 events?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-does-temporal-compare-to-message-queues-like-kafka-or-rabbitmq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How does Temporal compare to message queues like Kafka or RabbitMQ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-i-use-goroutines-inside-a-go-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Can I use Goroutines inside a Go Workflow?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contributing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        License
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -1763,6 +1020,8 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
@@ -1778,120 +1037,83 @@
 <p>An in-depth, production-ready handbook and cheat sheet for building resilient, event-driven, distributed applications using the <strong>Temporal Platform</strong> and the <strong>Temporal Go SDK</strong> (<code>go.temporal.io/sdk</code>).</p>
 </blockquote>
 <hr />
-<h2 id="quick-reference-tldr-cheat-sheet">Quick Reference / TL;DR Cheat Sheet<a class="headerlink" href="#quick-reference-tldr-cheat-sheet" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Requirement / Scenario</th>
-<th style="text-align: left;">Temporal Primitive</th>
-<th style="text-align: left;">Go SDK Implementation / API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Non-deterministic / I/O work</strong></td>
-<td style="text-align: left;">Activity</td>
-<td style="text-align: left;"><code>workflow.ExecuteActivity(ctx, ActivityFunc, args)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Durable sleep / delay</strong></td>
-<td style="text-align: left;">Workflow Timer</td>
-<td style="text-align: left;"><code>workflow.Sleep(ctx, duration)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Inspect running state (read-only)</strong></td>
-<td style="text-align: left;">Query</td>
-<td style="text-align: left;"><code>workflow.SetQueryHandler(ctx, "queryName", handler)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Asynchronous state update</strong></td>
-<td style="text-align: left;">Signal</td>
-<td style="text-align: left;"><code>workflow.GetSignalChannel(ctx, "signalName")</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Signal a workflow that may not exist</strong></td>
-<td style="text-align: left;">Signal-With-Start</td>
-<td style="text-align: left;"><code>client.SignalWithStartWorkflow(ctx, id, signal, ...)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Long-running loop (prevent history explosion)</strong></td>
-<td style="text-align: left;">Continue-As-New</td>
-<td style="text-align: left;"><code>workflow.NewContinueAsNewError(ctx, WorkflowFunc, ...)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Detect stuck long-running activity</strong></td>
-<td style="text-align: left;">Heartbeat</td>
-<td style="text-align: left;"><code>activity.RecordHeartbeat(ctx, progress)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Graceful workflow shutdown</strong></td>
-<td style="text-align: left;">Cancellation</td>
-<td style="text-align: left;"><code>workflow.GetVersion(ctx, ...)</code> &amp; context cancellation</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Filter &amp; search workflows</strong></td>
-<td style="text-align: left;">Search Attributes</td>
-<td style="text-align: left;">List Filter: <code>WorkflowType = "Order" AND Status = "Running"</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Data encryption &amp; privacy</strong></td>
-<td style="text-align: left;">Custom Payload Codec</td>
-<td style="text-align: left;">Implement <code>converter.PayloadCodec</code></td>
-</tr>
-</tbody>
-</table>
+<details>
+<summary><strong>⚡ Quick Reference / TL;DR Cheat Sheet (Click to expand)</strong></summary>
+
+<br>
+
+| Requirement / Scenario | Temporal Primitive | Go SDK Implementation / API |
+|:---|:---|:---|
+| **Non-deterministic / I/O work** | Activity | `workflow.ExecuteActivity(ctx, ActivityFunc, args)` |
+| **Durable sleep / delay** | Workflow Timer | `workflow.Sleep(ctx, duration)` |
+| **Inspect running state (read-only)** | Query | `workflow.SetQueryHandler(ctx, "queryName", handler)` |
+| **Asynchronous state update** | Signal | `workflow.GetSignalChannel(ctx, "signalName")` |
+| **Signal a workflow that may not exist** | Signal-With-Start | `client.SignalWithStartWorkflow(ctx, id, signal, ...)` |
+| **Long-running loop (prevent history explosion)** | Continue-As-New | `workflow.NewContinueAsNewError(ctx, WorkflowFunc, ...)` |
+| **Detect stuck long-running activity** | Heartbeat | `activity.RecordHeartbeat(ctx, progress)` |
+| **Graceful workflow shutdown** | Cancellation | `workflow.GetVersion(ctx, ...)` & context cancellation |
+| **Filter & search workflows** | Search Attributes | List Filter: `WorkflowType = "Order" AND Status = "Running"` |
+| **Data encryption & privacy** | Custom Payload Codec | Implement `converter.PayloadCodec` |
+
+</details>
+
 <hr />
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="#1-temporal-platform-architecture">1. Temporal Platform Architecture</a></li>
-<li><a href="#core-components">Core Components</a></li>
-<li><a href="#system-flow-diagram">System Flow Diagram</a></li>
-<li><a href="#2-core-concepts-workflows-vs-activities">2. Core Concepts: Workflows vs Activities</a></li>
-<li><a href="#workflows-durable-execution">Workflows: Durable Execution</a></li>
-<li><a href="#activities-side-effects--io">Activities: Side Effects \&amp; I/O</a></li>
-<li><a href="#workflows-vs-activities-comparison-matrix">Workflows vs Activities Comparison Matrix</a></li>
-<li><a href="#3-workers-and-task-queues">3. Workers and Task Queues</a></li>
-<li><a href="#worker-architecture">Worker Architecture</a></li>
-<li><a href="#task-queue-polling-mechanics">Task Queue Polling Mechanics</a></li>
-<li><a href="#high-availability-recommendations">High Availability Recommendations</a></li>
-<li><a href="#4-go-sdk-implementation-patterns">4. Go SDK Implementation Patterns</a></li>
-<li><a href="#initializing-the-client">Initializing the Client</a></li>
-<li><a href="#defining-and-registering-activities">Defining and Registering Activities</a></li>
-<li><a href="#defining-and-registering-workflows">Defining and Registering Workflows</a></li>
-<li><a href="#worker-bootstrap">Worker Bootstrap</a></li>
-<li><a href="#triggering-a-workflow-execution">Triggering a Workflow Execution</a></li>
-<li><a href="#5-workflow-determinism--replay-mechanics">5. Workflow Determinism &amp; Replay Mechanics</a></li>
-<li><a href="#how-event-replay-works">How Event Replay Works</a></li>
-<li><a href="#the-determinism-matrix-forbidden-vs-safe-go-primitives">The Determinism Matrix: Forbidden vs Safe Go Primitives</a></li>
-<li><a href="#static-analysis-with-workflowcheck">Static Analysis with workflowcheck</a></li>
-<li><a href="#workflow-versioning-workflowgetversion">Workflow Versioning (workflow.GetVersion)</a></li>
-<li><a href="#6-interacting-with-running-workflows">6. Interacting with Running Workflows</a></li>
-<li><a href="#signals-asynchronous-state-mutation">Signals (Asynchronous State Mutation)</a></li>
-<li><a href="#queries-synchronous-state-inspection">Queries (Synchronous State Inspection)</a></li>
-<li><a href="#signal-with-start">Signal-With-Start</a></li>
-<li><a href="#limits-and-constraints">Limits and Constraints</a></li>
-<li><a href="#7-timeouts-heartbeats-and-cancellation">7. Timeouts, Heartbeats, and Cancellation</a></li>
-<li><a href="#activity-timeout-dimensions">Activity Timeout Dimensions</a></li>
-<li><a href="#activity-heartbeating">Activity Heartbeating</a></li>
-<li><a href="#cancellation-vs-termination">Cancellation vs Termination</a></li>
-<li><a href="#8-error-handling--retry-policies">8. Error Handling &amp; Retry Policies</a></li>
-<li><a href="#default-retry-policy-mechanics">Default Retry Policy Mechanics</a></li>
-<li><a href="#non-retryable-application-errors">Non-Retryable Application Errors</a></li>
-<li><a href="#9-event-history-size-limits--continue-as-new">9. Event History, Size Limits &amp; Continue-As-New</a></li>
-<li><a href="#event-history-thresholds">Event History Thresholds</a></li>
-<li><a href="#implementing-continue-as-new">Implementing Continue-As-New</a></li>
-<li><a href="#10-sticky-execution--performance-optimization">10. Sticky Execution &amp; Performance Optimization</a></li>
-<li><a href="#11-visibility--advanced-search-attributes">11. Visibility &amp; Advanced Search Attributes</a></li>
-<li><a href="#list-filter-syntax">List Filter Syntax</a></li>
-<li><a href="#custom-search-attributes">Custom Search Attributes</a></li>
-<li><a href="#12-payload-security-codecs--encryption">12. Payload Security: Codecs &amp; Encryption</a></li>
-<li><a href="#end-to-end-encryption-flow">End-to-End Encryption Flow</a></li>
-<li><a href="#remote-codec-server-integration">Remote Codec Server Integration</a></li>
-<li><a href="#13-cluster-services-internals">13. Cluster Services Internals</a></li>
-<li><a href="#14-polyglot-microservices-orchestration">14. Polyglot Microservices Orchestration</a></li>
-<li><a href="#15-production-troubleshooting--debugging-checklist">15. Production Troubleshooting &amp; Debugging Checklist</a></li>
-<li><a href="#16-frequently-asked-questions-faq">16. Frequently Asked Questions (FAQ)</a></li>
-</ul>
+<details>
+<summary><strong>📖 Table of Contents (Click to expand)</strong></summary>
+
+<br>
+
+- [1. Temporal Platform Architecture](#1-temporal-platform-architecture)
+  - [Core Components](#core-components)
+  - [System Flow Diagram](#system-flow-diagram)
+- [2. Core Concepts: Workflows vs Activities](#2-core-concepts-workflows-vs-activities)
+  - [Workflows: Durable Execution](#workflows-durable-execution)
+  - [Activities: Side Effects \& I/O](#activities-side-effects--io)
+  - [Workflows vs Activities Comparison Matrix](#workflows-vs-activities-comparison-matrix)
+- [3. Workers and Task Queues](#3-workers-and-task-queues)
+  - [Worker Architecture](#worker-architecture)
+  - [Task Queue Polling Mechanics](#task-queue-polling-mechanics)
+  - [High Availability Recommendations](#high-availability-recommendations)
+- [4. Go SDK Implementation Patterns](#4-go-sdk-implementation-patterns)
+  - [Initializing the Client](#initializing-the-client)
+  - [Defining and Registering Activities](#defining-and-registering-activities)
+  - [Defining and Registering Workflows](#defining-and-registering-workflows)
+  - [Worker Bootstrap](#worker-bootstrap)
+  - [Triggering a Workflow Execution](#triggering-a-workflow-execution)
+- [5. Workflow Determinism & Replay Mechanics](#5-workflow-determinism--replay-mechanics)
+  - [How Event Replay Works](#how-event-replay-works)
+  - [The Determinism Matrix: Forbidden vs Safe Go Primitives](#the-determinism-matrix-forbidden-vs-safe-go-primitives)
+  - [Static Analysis with workflowcheck](#static-analysis-with-workflowcheck)
+  - [Workflow Versioning (workflow.GetVersion)](#workflow-versioning-workflowgetversion)
+- [6. Interacting with Running Workflows](#6-interacting-with-running-workflows)
+  - [Signals (Asynchronous State Mutation)](#signals-asynchronous-state-mutation)
+  - [Queries (Synchronous State Inspection)](#queries-synchronous-state-inspection)
+  - [Signal-With-Start](#signal-with-start)
+  - [Limits and Constraints](#limits-and-constraints)
+- [7. Timeouts, Heartbeats, and Cancellation](#7-timeouts-heartbeats-and-cancellation)
+  - [Activity Timeout Dimensions](#activity-timeout-dimensions)
+  - [Activity Heartbeating](#activity-heartbeating)
+  - [Cancellation vs Termination](#cancellation-vs-termination)
+- [8. Error Handling & Retry Policies](#8-error-handling--retry-policies)
+  - [Default Retry Policy Mechanics](#default-retry-policy-mechanics)
+  - [Non-Retryable Application Errors](#non-retryable-application-errors)
+- [9. Event History, Size Limits & Continue-As-New](#9-event-history-size-limits--continue-as-new)
+  - [Event History Thresholds](#event-history-thresholds)
+  - [Implementing Continue-As-New](#implementing-continue-as-new)
+- [10. Sticky Execution & Performance Optimization](#10-sticky-execution--performance-optimization)
+- [11. Visibility & Advanced Search Attributes](#11-visibility--advanced-search-attributes)
+  - [List Filter Syntax](#list-filter-syntax)
+  - [Custom Search Attributes](#custom-search-attributes)
+- [12. Payload Security: Codecs & Encryption](#12-payload-security-codecs--encryption)
+  - [End-to-End Encryption Flow](#end-to-end-encryption-flow)
+  - [Remote Codec Server Integration](#remote-codec-server-integration)
+- [13. Cluster Services Internals](#13-cluster-services-internals)
+- [14. Polyglot Microservices Orchestration](#14-polyglot-microservices-orchestration)
+- [15. Production Troubleshooting & Debugging Checklist](#15-production-troubleshooting--debugging-checklist)
+- [16. Frequently Asked Questions (FAQ)](#16-frequently-asked-questions-faq)
+
+</details>
+
 <hr />
 <h2 id="1-temporal-platform-architecture">1. Temporal Platform Architecture<a class="headerlink" href="#1-temporal-platform-architecture" title="Permanent link">&para;</a></h2>
 <p>Temporal is a distributed, scalable, durable, and highly available orchestration engine. It abstracts away failure recovery, distributed timers, and state persistence so developers can write complex asynchronous workflows as procedural code.</p>
@@ -2580,8 +1802,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -2622,7 +1849,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy", "content.code.annotate", "toc.integrate"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.a5f9d56c.min.js"></script>
