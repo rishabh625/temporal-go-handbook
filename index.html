@@ -25,7 +25,7 @@
     
     
       
-        <title>Temporal Go SDK Handbook</title>
+        <title>Temporal Learning Notes</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#complete-temporal-go-sdk-handbook-architectural-reference" class="md-skip">
+        <a href="#temporal-learning-notes" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Temporal Go SDK Handbook" class="md-header__button md-logo" aria-label="Temporal Go SDK Handbook" data-md-component="logo">
+    <a href="." title="Temporal Learning Notes" class="md-header__button md-logo" aria-label="Temporal Learning Notes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Temporal Go SDK Handbook
+            Temporal Learning Notes
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -232,13 +232,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Temporal Go SDK Handbook" class="md-nav__button md-logo" aria-label="Temporal Go SDK Handbook" data-md-component="logo">
+    <a href="." title="Temporal Learning Notes" class="md-nav__button md-logo" aria-label="Temporal Learning Notes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Temporal Go SDK Handbook
+    Temporal Learning Notes
   </label>
   
     <div class="md-nav__source">
@@ -322,22 +322,832 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-temporal-platform-architecture" class="md-nav__link">
+  <a href="#table-of-contents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Temporal Platform Architecture
+        Table of Contents
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Temporal Platform Architecture">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core Concepts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core Components
+        Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Queue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal Client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal Cluster
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-temporal-application-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Temporal Application Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registering-a-workflow-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registering a Workflow in Go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Activities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Activities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registering-an-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registering an Activity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-an-activity-from-a-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executing an Activity from a Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-activity-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asynchronous Activity Completion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-workers-and-task-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Workers and Task Queues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Workers and Task Queues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#availability-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Availability Recommendation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-interacting-with-workflow-executions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Interacting with Workflow Executions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Interacting with Workflow Executions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-with-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal-With-Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signals-vs-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals vs. Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-visibility-and-search-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Visibility and Search Attributes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Visibility and Search Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Filter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-timeouts-heartbeats-and-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Timeouts, Heartbeats, and Cancellation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Timeouts, Heartbeats, and Cancellation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-heartbeats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activity Heartbeats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-timeouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activity Timeouts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Activity Timeouts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-to-close-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start-to-Close Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule-to-close-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule-to-Close Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule-to-start-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schedule-to-Start Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeat Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Cancellation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Termination
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-failure-handling-and-retry-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Failure Handling and Retry Policies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Failure Handling and Retry Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-failure-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Failure Categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-failure-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal Failure Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-activity-retry-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default Activity Retry Policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-retryable-application-error-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Retryable Application Error in Go
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-payload-conversion-compression-and-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Payload Conversion, Compression, and Encryption
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Payload Conversion, Compression, and Encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-payload-codec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Payload Codec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-codec-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Codec Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-workflow-ids-and-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Workflow IDs and Retention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Workflow IDs and Retention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retention-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retention Period
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-timers-and-long-running-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Timers and Long-Running Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Timers and Long-Running Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sleep-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep in Go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timer-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timer in Go
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-event-history-and-continue-as-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Event History and Continue-As-New
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Event History and Continue-As-New">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recorded-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorded Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-as-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continue-As-New
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-sticky-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Sticky Execution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-workflow-determinism-and-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Workflow Determinism and Versioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Workflow Determinism and Versioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#history-replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History Replay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-deterministic-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Deterministic Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-changes-that-may-cause-non-determinism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Changes That May Cause Non-Determinism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-static-analysis-for-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Static Analysis for Go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-temporal-cluster-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Temporal Cluster Services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Temporal Cluster Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frontend-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matching-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matching Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worker Service
       
     </span>
   </a>
@@ -361,22 +1171,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-concepts-workflows-vs-activities" class="md-nav__link">
+  <a href="#17-polyglot-development" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Core Concepts: Workflows vs Activities
+        17. Polyglot Development
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Core Concepts: Workflows vs Activities">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-debugging-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Debugging Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Debugging Notes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#workflows-durable-execution" class="md-nav__link">
+  <a href="#worker-appears-active-after-shutdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflows: Durable Execution
+        Worker Appears Active After Shutdown
       
     </span>
   </a>
@@ -384,21 +1205,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activities-side-effects-io" class="md-nav__link">
+  <a href="#debugging-checklist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activities: Side Effects &amp; I/O
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workflows-vs-activities-comparison-matrix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workflows vs Activities Comparison Matrix
+        Debugging Checklist
       
     </span>
   </a>
@@ -411,22 +1221,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-workers-and-task-queues" class="md-nav__link">
+  <a href="#19-quick-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Workers and Task Queues
+        19. Quick Reference
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Workers and Task Queues">
+    <nav class="md-nav" aria-label="19. Quick Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#worker-architecture" class="md-nav__link">
+  <a href="#when-to-use-each-feature" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Worker Architecture
+        When to Use Each Feature
       
     </span>
   </a>
@@ -434,21 +1244,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#task-queue-polling-mechanics" class="md-nav__link">
+  <a href="#core-go-sdk-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Queue Polling Mechanics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#high-availability-recommendations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        High Availability Recommendations
+        Core Go SDK Flow
       
     </span>
   </a>
@@ -461,332 +1260,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-go-sdk-implementation-patterns" class="md-nav__link">
+  <a href="#suggested-repository-description" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Go SDK Implementation Patterns
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Go SDK Implementation Patterns">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#initializing-the-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initializing the Client
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-and-registering-activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining and Registering Activities
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-and-registering-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Defining and Registering Workflows
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#worker-bootstrap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Worker Bootstrap
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#triggering-a-workflow-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Triggering a Workflow Execution
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-workflow-determinism-replay-mechanics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Workflow Determinism &amp; Replay Mechanics
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Workflow Determinism &amp; Replay Mechanics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-event-replay-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How Event Replay Works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-determinism-matrix-forbidden-vs-safe-go-primitives" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Determinism Matrix: Forbidden vs Safe Go Primitives
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#static-analysis-with-workflowcheck" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Static Analysis with workflowcheck
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workflow-versioning-workflowgetversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workflow Versioning (workflow.GetVersion)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-interacting-with-running-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Interacting with Running Workflows
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Interacting with Running Workflows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#signals-asynchronous-state-mutation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signals (Asynchronous State Mutation)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#queries-synchronous-state-inspection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Queries (Synchronous State Inspection)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signal-with-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Signal-With-Start
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limits-and-constraints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Limits and Constraints
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-timeouts-heartbeats-and-cancellation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Timeouts, Heartbeats, and Cancellation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Timeouts, Heartbeats, and Cancellation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#activity-timeout-dimensions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Activity Timeout Dimensions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activity-heartbeating" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Activity Heartbeating
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cancellation-vs-termination" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cancellation vs Termination
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-error-handling-retry-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Error Handling &amp; Retry Policies
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Error Handling &amp; Retry Policies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#default-retry-policy-mechanics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Default Retry Policy Mechanics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#non-retryable-application-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Non-Retryable Application Errors
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-event-history-size-limits-continue-as-new" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Event History, Size Limits &amp; Continue-As-New
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. Event History, Size Limits &amp; Continue-As-New">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#event-history-thresholds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Event History Thresholds
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementing-continue-as-new" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implementing Continue-As-New
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-sticky-execution-performance-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Sticky Execution &amp; Performance Optimization
+        Suggested Repository Description
       
     </span>
   </a>
@@ -794,204 +1271,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-visibility-advanced-search-attributes" class="md-nav__link">
+  <a href="#disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Visibility &amp; Advanced Search Attributes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="11. Visibility &amp; Advanced Search Attributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#list-filter-syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        List Filter Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-search-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Search Attributes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-payload-security-codecs-encryption" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. Payload Security: Codecs &amp; Encryption
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="12. Payload Security: Codecs &amp; Encryption">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#end-to-end-encryption-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        End-to-End Encryption Flow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remote-codec-server-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Remote Codec Server Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-cluster-services-internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        13. Cluster Services Internals
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-polyglot-microservices-orchestration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        14. Polyglot Microservices Orchestration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-production-troubleshooting-debugging-checklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        15. Production Troubleshooting &amp; Debugging Checklist
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#16-frequently-asked-questions-faq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        16. Frequently Asked Questions (FAQ)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="16. Frequently Asked Questions (FAQ)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-the-primary-difference-between-a-temporal-workflow-and-an-activity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is the primary difference between a Temporal Workflow and an Activity?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-does-temporal-require-workflows-to-be-deterministic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why does Temporal require Workflows to be deterministic?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-happens-when-event-history-reaches-51200-events" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What happens when Event History reaches 51,200 events?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-does-temporal-compare-to-message-queues-like-kafka-or-rabbitmq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How does Temporal compare to message queues like Kafka or RabbitMQ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-i-use-goroutines-inside-a-go-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Can I use Goroutines inside a Go Workflow?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contributing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        License
+        Disclaimer
       
     </span>
   </a>
@@ -1028,104 +1311,560 @@
   
 
 
-<h1 id="complete-temporal-go-sdk-handbook-architectural-reference">Complete Temporal Go SDK Handbook &amp; Architectural Reference<a class="headerlink" href="#complete-temporal-go-sdk-handbook-architectural-reference" title="Permanent link">&para;</a></h1>
-<p><a href="https://pkg.go.dev/go.temporal.io/sdk"><img alt="Go Reference" src="https://pkg.go.dev/badge/go.temporal.io/sdk.svg" /></a>
-<a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
-<a href="https://docs.temporal.io"><img alt="Temporal Version" src="https://img.shields.io/badge/Temporal-v1.20%2B-blue.svg" /></a>
-<a href="https://github.com/rishabh625"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" /></a></p>
+<h1 id="temporal-learning-notes">Temporal Learning Notes<a class="headerlink" href="#temporal-learning-notes" title="Permanent link">&para;</a></h1>
+<p>A structured reference for learning the Temporal Platform, with examples and terminology focused primarily on the Go SDK.</p>
 <blockquote>
-<p>An in-depth, production-ready handbook and cheat sheet for building resilient, event-driven, distributed applications using the <strong>Temporal Platform</strong> and the <strong>Temporal Go SDK</strong> (<code>go.temporal.io/sdk</code>).</p>
+<p><strong>Note:</strong> These are personal learning notes. Verify version-specific limits and APIs against the current Temporal documentation before using them in production.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<details>
+<summary><strong>Click to expand Table of Contents</strong></summary>
+<ol>
+<li><a href="#1-core-concepts">Core Concepts</a></li>
+<li><a href="#2-temporal-application-architecture">Temporal Application Architecture</a></li>
+<li><a href="#3-workflows">Workflows</a></li>
+<li><a href="#4-activities">Activities</a></li>
+<li><a href="#5-workers-and-task-queues">Workers and Task Queues</a></li>
+<li><a href="#6-interacting-with-workflow-executions">Interacting with Workflow Executions</a></li>
+<li><a href="#7-visibility-and-search-attributes">Visibility and Search Attributes</a></li>
+<li><a href="#8-timeouts-heartbeats-and-cancellation">Timeouts, Heartbeats, and Cancellation</a></li>
+<li><a href="#9-failure-handling-and-retry-policies">Failure Handling and Retry Policies</a></li>
+<li><a href="#10-payload-conversion-compression-and-encryption">Payload Conversion, Compression, and Encryption</a></li>
+<li><a href="#11-workflow-ids-and-retention">Workflow IDs and Retention</a></li>
+<li><a href="#12-timers-and-long-running-workflows">Timers and Long-Running Workflows</a></li>
+<li><a href="#13-event-history-and-continue-as-new">Event History and Continue-As-New</a></li>
+<li><a href="#14-sticky-execution">Sticky Execution</a></li>
+<li><a href="#15-workflow-determinism-and-versioning">Workflow Determinism and Versioning</a></li>
+<li><a href="#16-temporal-cluster-services">Temporal Cluster Services</a></li>
+<li><a href="#17-polyglot-development">Polyglot Development</a></li>
+<li><a href="#18-debugging-notes">Debugging Notes</a></li>
+<li><a href="#19-quick-reference">Quick Reference</a></li>
+</ol>
+</details>
+<hr />
+<h2 id="1-core-concepts">1. Core Concepts<a class="headerlink" href="#1-core-concepts" title="Permanent link">&para;</a></h2>
+<h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
+<p>A <strong>Workflow</strong> is a durable function that defines a sequence of steps for a business process. A Workflow can be invoked multiple times and must behave deterministically during replay.</p>
+<p>For the same Workflow history, the Workflow code must produce the same sequence of Temporal commands. External calls and other non-deterministic operations should not be performed directly inside Workflow code.</p>
+<h3 id="activity">Activity<a class="headerlink" href="#activity" title="Permanent link">&para;</a></h3>
+<p>An <strong>Activity</strong> represents work that may be non-deterministic or interact with an external system, such as:</p>
+<ul>
+<li>Calling an API or LLM</li>
+<li>Reading or writing files</li>
+<li>Accessing a database</li>
+<li>Sending an email</li>
+<li>Processing a payment</li>
+</ul>
+<p>Activities can be retried and timed out independently from the Workflow.</p>
+<h3 id="worker">Worker<a class="headerlink" href="#worker" title="Permanent link">&para;</a></h3>
+<p>A <strong>Worker</strong> is a process that hosts and executes Workflow and Activity code. Workers continuously poll a Task Queue and accept tasks when they have available capacity.</p>
+<h3 id="task-queue">Task Queue<a class="headerlink" href="#task-queue" title="Permanent link">&para;</a></h3>
+<p>A <strong>Task Queue</strong> connects the Temporal Cluster to Workers. The cluster places Workflow Tasks and Activity Tasks on a queue, and Workers poll that queue to execute them.</p>
+<h3 id="temporal-client">Temporal Client<a class="headerlink" href="#temporal-client" title="Permanent link">&para;</a></h3>
+<p>A <strong>Temporal Client</strong> starts and interacts with Workflow Executions. It can:</p>
+<ul>
+<li>Start a Workflow</li>
+<li>Send a Signal</li>
+<li>execute a Query</li>
+<li>Request cancellation or termination</li>
+<li>Retrieve a Workflow result</li>
+</ul>
+<h3 id="temporal-cluster">Temporal Cluster<a class="headerlink" href="#temporal-cluster" title="Permanent link">&para;</a></h3>
+<p>The <strong>Temporal Cluster</strong> manages orchestration and durable execution. It preserves Workflow state through Event History and coordinates task delivery through Task Queues.</p>
+<hr />
+<h2 id="2-temporal-application-architecture">2. Temporal Application Architecture<a class="headerlink" href="#2-temporal-application-architecture" title="Permanent link">&para;</a></h2>
+<p>A typical Temporal application contains:</p>
+<ol>
+<li>A <strong>Workflow Definition</strong></li>
+<li>One or more <strong>Activity Definitions</strong></li>
+<li>A <strong>Worker configuration</strong></li>
+<li>A <strong>Client application</strong></li>
+<li>A <strong>Temporal Cluster</strong></li>
+</ol>
+<p>A simplified execution flow is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Client application
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>       |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>       | Start Workflow / Signal / Query
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       v
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Temporal Frontend Service
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>       |
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>       v
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Temporal Cluster and Task Queue
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>       |
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>       | Worker polls
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>       v
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Worker executes Workflow and Activity code
+</code></pre></div>
+<p>The Temporal Frontend Service acts as an API gateway. The Web UI, CLI, and SDK clients connect to it, normally over gRPC.</p>
+<hr />
+<h2 id="3-workflows">3. Workflows<a class="headerlink" href="#3-workflows" title="Permanent link">&para;</a></h2>
+<p>A Workflow defines the orchestration logic for a durable process. It may execute multiple Activities sequentially or in parallel.</p>
+<h3 id="registering-a-workflow-in-go">Registering a Workflow in Go<a class="headerlink" href="#registering-a-workflow-in-go" title="Permanent link">&para;</a></h3>
+<p>A Workflow Definition is registered with a Worker:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">w</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="s">"my-task-queue"</span><span class="p">,</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">w</span><span class="p">.</span><span class="nx">RegisterWorkflow</span><span class="p">(</span><span class="nx">MyWorkflow</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">w</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">InterruptCh</span><span class="p">())</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="workflow-input">Workflow Input<a class="headerlink" href="#workflow-input" title="Permanent link">&para;</a></h3>
+<p>In Go, using a struct for Workflow input makes future changes easier to manage:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">WorkflowInput</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">OrderID</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">Email</span><span class="w">   </span><span class="kt">string</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Fields can be added more safely than changing a long list of positional parameters. However, data-contract compatibility must still be considered for running and replaying Workflow Executions.</p>
+<h3 id="workflow-errors">Workflow Errors<a class="headerlink" href="#workflow-errors" title="Permanent link">&para;</a></h3>
+<p>If a Workflow returns an error, the Workflow Execution is marked as failed. Unlike Activities, Workflows do not automatically use an Activity-style Retry Policy unless retry behavior is explicitly configured when starting the Workflow.</p>
+<hr />
+<h2 id="4-activities">4. Activities<a class="headerlink" href="#4-activities" title="Permanent link">&para;</a></h2>
+<p>An Activity Definition is typically an exported Go function. Its parameters and return values must be serializable by the configured Data Converter.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">ChargeCard</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="nx">PaymentInput</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ChargeStatus</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="c1">// Call an external payment service.</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ChargeStatus</span><span class="p">{</span><span class="nx">Success</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="registering-an-activity">Registering an Activity<a class="headerlink" href="#registering-an-activity" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">w</span><span class="p">.</span><span class="nx">RegisterActivity</span><span class="p">(</span><span class="nx">ChargeCard</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="executing-an-activity-from-a-workflow">Executing an Activity from a Workflow<a class="headerlink" href="#executing-an-activity-from-a-workflow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ActivityOptions</span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nx">StartToCloseTimeout</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">ChargeStatus</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">ChargeCard</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">}</span>
+</code></pre></div>
+<p>An Activity must be invoked by Workflow code. A Worker that has the Activity registered must poll the relevant Task Queue.</p>
+<h3 id="asynchronous-activity-completion">Asynchronous Activity Completion<a class="headerlink" href="#asynchronous-activity-completion" title="Permanent link">&para;</a></h3>
+<p>Asynchronous Activity Completion is useful when an Activity delegates work to an external system and the result will arrive later. The Activity can return without completing, and the external system can complete it later by using its Activity task token.</p>
+<p>Use a Signal instead when the interaction is better represented as an external message that changes or advances the Workflow state.</p>
+<hr />
+<h2 id="5-workers-and-task-queues">5. Workers and Task Queues<a class="headerlink" href="#5-workers-and-task-queues" title="Permanent link">&para;</a></h2>
+<p>Workers poll Task Queues and execute application code. Task Queues are created dynamically when first used.</p>
+<h3 id="availability-recommendation">Availability Recommendation<a class="headerlink" href="#availability-recommendation" title="Permanent link">&para;</a></h3>
+<p>For production workloads, run at least two Worker processes for each important Task Queue. If one Worker crashes, another Worker can continue polling and process new or retried tasks.</p>
+<h3 id="responsibilities">Responsibilities<a class="headerlink" href="#responsibilities" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client</td>
+<td>Requests Workflow execution and retrieves results</td>
+</tr>
+<tr>
+<td>Temporal Cluster</td>
+<td>Orchestrates durable execution</td>
+</tr>
+<tr>
+<td>Task Queue</td>
+<td>Routes tasks from the cluster to Workers</td>
+</tr>
+<tr>
+<td>Worker</td>
+<td>Executes Workflow and Activity code</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-interacting-with-workflow-executions">6. Interacting with Workflow Executions<a class="headerlink" href="#6-interacting-with-workflow-executions" title="Permanent link">&para;</a></h2>
+<h3 id="signals">Signals<a class="headerlink" href="#signals" title="Permanent link">&para;</a></h3>
+<p>A <strong>Signal</strong> is an asynchronous message sent to a running Workflow Execution. It can update state or control the execution.</p>
+<p>Example: an order-processing Workflow receives a <code>PaymentReceived</code> Signal and then proceeds to ship the order.</p>
+<p>Signals are:</p>
+<ul>
+<li>Defined and handled in Workflow code</li>
+<li>Sent from a Temporal Client, CLI, or another Workflow</li>
+<li>Asynchronous</li>
+</ul>
+<p>Workflows can also send Signals to other Workflows. These are commonly called <strong>External Signals</strong>.</p>
+<h3 id="signal-with-start">Signal-With-Start<a class="headerlink" href="#signal-with-start" title="Permanent link">&para;</a></h3>
+<p>Sending a normal Signal requires a Workflow Execution to exist. <strong>Signal-With-Start</strong> handles the case where the Workflow might not be running:</p>
+<ul>
+<li>If the Workflow is running, Temporal sends the Signal.</li>
+<li>If the Workflow is not running, Temporal starts it and then sends the Signal.</li>
+</ul>
+<h3 id="signal-constraints">Signal Constraints<a class="headerlink" href="#signal-constraints" title="Permanent link">&para;</a></h3>
+<p>The notes record these important limits:</p>
+<ul>
+<li>Up to <strong>2,000 pending outgoing Signal requests</strong> per Workflow Execution</li>
+<li>Up to <strong>10,000 received Signals</strong> during a single Workflow Execution</li>
+<li>Event History limits still apply</li>
+</ul>
+<p>Batching related messages into one Signal can reduce Signal and Event History growth.</p>
+<blockquote>
+<p>Limits can change by Temporal version or service configuration. Verify them in the current documentation.</p>
+</blockquote>
+<h3 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h3>
+<p>A <strong>Query</strong> synchronously reads the internal state of a Workflow Execution without changing it.</p>
+<p>Typical uses include:</p>
+<ul>
+<li>Reading the current order status</li>
+<li>Reporting completion percentage</li>
+<li>Checking how many Activities have completed</li>
+<li>Inspecting state before a long-running Workflow finishes</li>
+</ul>
+<p>Queries may also be issued against a closed Workflow Execution when a compatible Worker is available to process the Query.</p>
+<h3 id="signals-vs-queries">Signals vs. Queries<a class="headerlink" href="#signals-vs-queries" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Signal</th>
+<th>Query</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Change Workflow state</td>
+<td>Read Workflow state</td>
+</tr>
+<tr>
+<td>Operation</td>
+<td>Asynchronous</td>
+<td>Synchronous</td>
+</tr>
+<tr>
+<td>Mutates state</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Requires Workflow code</td>
+<td>Signal handler</td>
+<td>Query handler</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-visibility-and-search-attributes">7. Visibility and Search Attributes<a class="headerlink" href="#7-visibility-and-search-attributes" title="Permanent link">&para;</a></h2>
+<p><strong>Visibility</strong> refers to the Temporal subsystems and APIs used to view, filter, and search Workflow Executions.</p>
+<p>The following use Visibility data:</p>
+<ul>
+<li>Temporal Web UI</li>
+<li>Temporal CLI</li>
+<li>Temporal SDKs</li>
+</ul>
+<h3 id="list-filter">List Filter<a class="headerlink" href="#list-filter" title="Permanent link">&para;</a></h3>
+<p>A SQL-like List Filter can be used to find Workflow Executions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>WorkflowType = "pizzaWorkflow" AND ExecutionStatus = "Running"
+</code></pre></div>
+<p>CLI example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>temporal<span class="w"> </span>workflow<span class="w"> </span>list<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'WorkflowType = "pizzaWorkflow" AND ExecutionStatus = "Running"'</span>
+</code></pre></div>
+<h3 id="search-attributes">Search Attributes<a class="headerlink" href="#search-attributes" title="Permanent link">&para;</a></h3>
+<p>Search Attributes organize Workflow Executions and make them searchable.</p>
+<p>Examples of default Search Attributes include:</p>
+<ul>
+<li><code>WorkflowType</code></li>
+<li><code>ExecutionStatus</code></li>
+<li><code>StartTime</code></li>
+<li><code>CloseTime</code></li>
+</ul>
+<p>Custom Search Attributes are configured per Namespace. Supported types include:</p>
+<ul>
+<li><code>Bool</code></li>
+<li><code>Datetime</code></li>
+<li><code>Double</code></li>
+<li><code>Int</code></li>
+<li><code>Keyword</code></li>
+<li><code>KeywordList</code></li>
+<li><code>Text</code></li>
+</ul>
+<hr />
+<h2 id="8-timeouts-heartbeats-and-cancellation">8. Timeouts, Heartbeats, and Cancellation<a class="headerlink" href="#8-timeouts-heartbeats-and-cancellation" title="Permanent link">&para;</a></h2>
+<h3 id="activity-heartbeats">Activity Heartbeats<a class="headerlink" href="#activity-heartbeats" title="Permanent link">&para;</a></h3>
+<p>An Activity Heartbeat is a periodic progress notification sent from a long-running Activity to the Temporal Service.</p>
+<p>Heartbeats help Temporal:</p>
+<ul>
+<li>Detect an unresponsive Activity</li>
+<li>Record Activity progress</li>
+<li>Deliver cancellation requests</li>
+<li>Allow retries to resume from recorded progress</li>
+</ul>
+<p>The notes record a default heartbeat throttle interval of <strong>30 seconds</strong> and a maximum throttle interval of <strong>60 seconds</strong>, both configurable through Worker options.</p>
+<h3 id="activity-timeouts">Activity Timeouts<a class="headerlink" href="#activity-timeouts" title="Permanent link">&para;</a></h3>
+<h4 id="start-to-close-timeout">Start-to-Close Timeout<a class="headerlink" href="#start-to-close-timeout" title="Permanent link">&para;</a></h4>
+<p>The maximum time allowed for a single Activity execution attempt, from when a Worker starts it until that attempt completes.</p>
+<h4 id="schedule-to-close-timeout">Schedule-to-Close Timeout<a class="headerlink" href="#schedule-to-close-timeout" title="Permanent link">&para;</a></h4>
+<p>The maximum total time from when an Activity is scheduled until it completes, including queueing time and retries.</p>
+<h4 id="schedule-to-start-timeout">Schedule-to-Start Timeout<a class="headerlink" href="#schedule-to-start-timeout" title="Permanent link">&para;</a></h4>
+<p>The maximum time an Activity Task may wait in a Task Queue before a Worker starts it.</p>
+<h4 id="heartbeat-timeout">Heartbeat Timeout<a class="headerlink" href="#heartbeat-timeout" title="Permanent link">&para;</a></h4>
+<p>The maximum permitted time between Activity Heartbeats. It is useful for detecting stalled long-running Activities.</p>
+<p>Activity timeouts are configured using <code>workflow.ActivityOptions</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ActivityOptions</span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nx">StartToCloseTimeout</span><span class="p">:</span><span class="w">    </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nx">ScheduleToCloseTimeout</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nx">HeartbeatTimeout</span><span class="p">:</span><span class="w">       </span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>At least one of <code>StartToCloseTimeout</code> or <code>ScheduleToCloseTimeout</code> must be configured.</p>
+<h3 id="workflow-cancellation">Workflow Cancellation<a class="headerlink" href="#workflow-cancellation" title="Permanent link">&para;</a></h3>
+<p>Cancellation requests a graceful stop and gives Workflow and Activity code an opportunity to perform cleanup.</p>
+<h3 id="workflow-termination">Workflow Termination<a class="headerlink" href="#workflow-termination" title="Permanent link">&para;</a></h3>
+<p>Termination stops a Workflow Execution immediately. It does not allow the Workflow to run cleanup logic.</p>
+<hr />
+<h2 id="9-failure-handling-and-retry-policies">9. Failure Handling and Retry Policies<a class="headerlink" href="#9-failure-handling-and-retry-policies" title="Permanent link">&para;</a></h2>
+<h3 id="general-failure-categories">General Failure Categories<a class="headerlink" href="#general-failure-categories" title="Permanent link">&para;</a></h3>
+<p>Failures can be considered:</p>
+<ol>
+<li><strong>Transient</strong>: temporary and likely to succeed quickly on retry</li>
+<li><strong>Intermittent</strong>: occurs unpredictably and may succeed after retry</li>
+<li><strong>Permanent</strong>: should not be retried without changing the input or code</li>
+</ol>
+<h3 id="temporal-failure-types">Temporal Failure Types<a class="headerlink" href="#temporal-failure-types" title="Permanent link">&para;</a></h3>
+<p>Common failure types include:</p>
+<ul>
+<li><code>ApplicationFailure</code></li>
+<li><code>CanceledFailure</code></li>
+<li><code>TerminatedFailure</code></li>
+<li><code>TimeoutFailure</code></li>
+<li><code>ServerFailure</code></li>
+<li><code>ChildWorkflowFailure</code></li>
+<li><code>ActivityFailure</code></li>
+<li><code>WorkflowExecutionAlreadyStarted</code></li>
+</ul>
+<h3 id="default-activity-retry-policy">Default Activity Retry Policy<a class="headerlink" href="#default-activity-retry-policy" title="Permanent link">&para;</a></h3>
+<p>Temporal retries failed Activities according to their Retry Policy.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th style="text-align: right;">Recorded default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial Interval</td>
+<td style="text-align: right;">1 second</td>
+<td>Delay before the first retry</td>
+</tr>
+<tr>
+<td>Backoff Coefficient</td>
+<td style="text-align: right;">2.0</td>
+<td>Multiplier for subsequent delays</td>
+</tr>
+<tr>
+<td>Maximum Interval</td>
+<td style="text-align: right;">100 × initial interval</td>
+<td>Upper bound for retry delay</td>
+</tr>
+<tr>
+<td>Maximum Attempts</td>
+<td style="text-align: right;">0</td>
+<td>Interpreted as unlimited attempts</td>
+</tr>
+<tr>
+<td>Non-Retryable Errors</td>
+<td style="text-align: right;">None</td>
+<td>Error types that must not be retried</td>
+</tr>
+</tbody>
+</table>
+<p>With an initial interval of one second and a backoff coefficient of <code>2.0</code>, delays grow approximately as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>1s, 2s, 4s, 8s, 16s, 32s, 64s, 100s, 100s, ...
+</code></pre></div>
+<h3 id="non-retryable-application-error-in-go">Non-Retryable Application Error in Go<a class="headerlink" href="#non-retryable-application-error-in-go" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">address</span><span class="p">.</span><span class="nx">CardNumber</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">chargeStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">temporal</span><span class="p">.</span><span class="nx">NewNonRetryableApplicationError</span><span class="p">(</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="s">"Credit card number must contain 16 digits"</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="s">"CreditCardError"</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="kc">nil</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>Use a non-retryable error when retrying cannot resolve the problem, such as invalid input.</p>
+<hr />
+<h2 id="10-payload-conversion-compression-and-encryption">10. Payload Conversion, Compression, and Encryption<a class="headerlink" href="#10-payload-conversion-compression-and-encryption" title="Permanent link">&para;</a></h2>
+<p>Temporal Data Converters serialize and deserialize data sent between:</p>
+<ul>
+<li>Clients</li>
+<li>Workflows</li>
+<li>Activities</li>
+<li>The Temporal Service</li>
+</ul>
+<p>Payloads may represent JSON, Protocol Buffers, byte arrays, or null values.</p>
+<h3 id="custom-payload-codec">Custom Payload Codec<a class="headerlink" href="#custom-payload-codec" title="Permanent link">&para;</a></h3>
+<p>A custom Payload Codec can provide:</p>
+<ul>
+<li>Encryption and decryption</li>
+<li>Compression and decompression</li>
+<li>Custom handling for payload representations</li>
+</ul>
+<p>Encryption keys should be stored in a secure key-management system such as HashiCorp Vault, AWS KMS, Google Cloud KMS, or Azure Key Vault rather than embedded in application code.</p>
+<h3 id="remote-codec-server">Remote Codec Server<a class="headerlink" href="#remote-codec-server" title="Permanent link">&para;</a></h3>
+<p>The Temporal Web UI and CLI can call a remote Codec Server to decode payloads. A decode endpoint may resemble:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>POST http://codec.server/your-namespace/decode
+</code></pre></div>
+<p>The request and response contain a JSON object with a <code>payloads</code> array. The server processes those payloads through the configured Payload Codec before returning them.</p>
+<blockquote>
+<p>Protect a Codec Server with authentication, authorization, TLS, and network controls because it can access sensitive plaintext data.</p>
 </blockquote>
 <hr />
-<details>
-<summary><strong>⚡ Quick Reference / TL;DR Cheat Sheet (Click to expand)</strong></summary>
-
-<br>
-
-| Requirement / Scenario | Temporal Primitive | Go SDK Implementation / API |
-|:---|:---|:---|
-| **Non-deterministic / I/O work** | Activity | `workflow.ExecuteActivity(ctx, ActivityFunc, args)` |
-| **Durable sleep / delay** | Workflow Timer | `workflow.Sleep(ctx, duration)` |
-| **Inspect running state (read-only)** | Query | `workflow.SetQueryHandler(ctx, "queryName", handler)` |
-| **Asynchronous state update** | Signal | `workflow.GetSignalChannel(ctx, "signalName")` |
-| **Signal a workflow that may not exist** | Signal-With-Start | `client.SignalWithStartWorkflow(ctx, id, signal, ...)` |
-| **Long-running loop (prevent history explosion)** | Continue-As-New | `workflow.NewContinueAsNewError(ctx, WorkflowFunc, ...)` |
-| **Detect stuck long-running activity** | Heartbeat | `activity.RecordHeartbeat(ctx, progress)` |
-| **Graceful workflow shutdown** | Cancellation | `workflow.GetVersion(ctx, ...)` & context cancellation |
-| **Filter & search workflows** | Search Attributes | List Filter: `WorkflowType = "Order" AND Status = "Running"` |
-| **Data encryption & privacy** | Custom Payload Codec | Implement `converter.PayloadCodec` |
-
-</details>
-
+<h2 id="11-workflow-ids-and-retention">11. Workflow IDs and Retention<a class="headerlink" href="#11-workflow-ids-and-retention" title="Permanent link">&para;</a></h2>
+<h3 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h3>
+<p>A Namespace provides logical isolation within a Temporal Cluster. Different teams or applications can own separate Namespaces.</p>
+<h3 id="workflow-id">Workflow ID<a class="headerlink" href="#workflow-id" title="Permanent link">&para;</a></h3>
+<p>A Workflow ID identifies a Workflow Execution within a Namespace. Temporal manages uniqueness according to the configured ID conflict and reuse policies.</p>
+<p>The notes list the following Workflow ID Reuse Policy values:</p>
+<ul>
+<li><code>WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE</code></li>
+<li><code>WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY</code></li>
+<li><code>WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE</code></li>
+<li><code>WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING</code></li>
+</ul>
+<blockquote>
+<p>Temporal SDKs and API versions may distinguish Workflow ID Reuse Policy from Workflow ID Conflict Policy. Check the current SDK documentation when configuring new executions.</p>
+</blockquote>
+<h3 id="retention-period">Retention Period<a class="headerlink" href="#retention-period" title="Permanent link">&para;</a></h3>
+<p>After a Workflow Execution closes, its history is retained according to the Namespace retention period. The notes indicate a typical range of <strong>1 to 30 days</strong>.</p>
+<p>Retention applies after a Workflow closes. It does not limit how long an active Workflow may run.</p>
+<p>Self-hosted clusters can configure archival for longer-term storage.</p>
 <hr />
-<details>
-<summary><strong>📖 Table of Contents (Click to expand)</strong></summary>
-
-<br>
-
-- [1. Temporal Platform Architecture](#1-temporal-platform-architecture)
-  - [Core Components](#core-components)
-  - [System Flow Diagram](#system-flow-diagram)
-- [2. Core Concepts: Workflows vs Activities](#2-core-concepts-workflows-vs-activities)
-  - [Workflows: Durable Execution](#workflows-durable-execution)
-  - [Activities: Side Effects \& I/O](#activities-side-effects--io)
-  - [Workflows vs Activities Comparison Matrix](#workflows-vs-activities-comparison-matrix)
-- [3. Workers and Task Queues](#3-workers-and-task-queues)
-  - [Worker Architecture](#worker-architecture)
-  - [Task Queue Polling Mechanics](#task-queue-polling-mechanics)
-  - [High Availability Recommendations](#high-availability-recommendations)
-- [4. Go SDK Implementation Patterns](#4-go-sdk-implementation-patterns)
-  - [Initializing the Client](#initializing-the-client)
-  - [Defining and Registering Activities](#defining-and-registering-activities)
-  - [Defining and Registering Workflows](#defining-and-registering-workflows)
-  - [Worker Bootstrap](#worker-bootstrap)
-  - [Triggering a Workflow Execution](#triggering-a-workflow-execution)
-- [5. Workflow Determinism & Replay Mechanics](#5-workflow-determinism--replay-mechanics)
-  - [How Event Replay Works](#how-event-replay-works)
-  - [The Determinism Matrix: Forbidden vs Safe Go Primitives](#the-determinism-matrix-forbidden-vs-safe-go-primitives)
-  - [Static Analysis with workflowcheck](#static-analysis-with-workflowcheck)
-  - [Workflow Versioning (workflow.GetVersion)](#workflow-versioning-workflowgetversion)
-- [6. Interacting with Running Workflows](#6-interacting-with-running-workflows)
-  - [Signals (Asynchronous State Mutation)](#signals-asynchronous-state-mutation)
-  - [Queries (Synchronous State Inspection)](#queries-synchronous-state-inspection)
-  - [Signal-With-Start](#signal-with-start)
-  - [Limits and Constraints](#limits-and-constraints)
-- [7. Timeouts, Heartbeats, and Cancellation](#7-timeouts-heartbeats-and-cancellation)
-  - [Activity Timeout Dimensions](#activity-timeout-dimensions)
-  - [Activity Heartbeating](#activity-heartbeating)
-  - [Cancellation vs Termination](#cancellation-vs-termination)
-- [8. Error Handling & Retry Policies](#8-error-handling--retry-policies)
-  - [Default Retry Policy Mechanics](#default-retry-policy-mechanics)
-  - [Non-Retryable Application Errors](#non-retryable-application-errors)
-- [9. Event History, Size Limits & Continue-As-New](#9-event-history-size-limits--continue-as-new)
-  - [Event History Thresholds](#event-history-thresholds)
-  - [Implementing Continue-As-New](#implementing-continue-as-new)
-- [10. Sticky Execution & Performance Optimization](#10-sticky-execution--performance-optimization)
-- [11. Visibility & Advanced Search Attributes](#11-visibility--advanced-search-attributes)
-  - [List Filter Syntax](#list-filter-syntax)
-  - [Custom Search Attributes](#custom-search-attributes)
-- [12. Payload Security: Codecs & Encryption](#12-payload-security-codecs--encryption)
-  - [End-to-End Encryption Flow](#end-to-end-encryption-flow)
-  - [Remote Codec Server Integration](#remote-codec-server-integration)
-- [13. Cluster Services Internals](#13-cluster-services-internals)
-- [14. Polyglot Microservices Orchestration](#14-polyglot-microservices-orchestration)
-- [15. Production Troubleshooting & Debugging Checklist](#15-production-troubleshooting--debugging-checklist)
-- [16. Frequently Asked Questions (FAQ)](#16-frequently-asked-questions-faq)
-
-</details>
-
+<h2 id="12-timers-and-long-running-workflows">12. Timers and Long-Running Workflows<a class="headerlink" href="#12-timers-and-long-running-workflows" title="Permanent link">&para;</a></h2>
+<p>Temporal Timers allow Workflow code to wait durably without consuming a Worker thread for the entire waiting period. Timer state is maintained by the Temporal Service.</p>
+<p>Typical use case:</p>
+<ul>
+<li>Send an onboarding email after one day</li>
+<li>Send a follow-up email after one week</li>
+</ul>
+<h3 id="sleep-in-go">Sleep in Go<a class="headerlink" href="#sleep-in-go" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="timer-in-go">Timer in Go<a class="headerlink" href="#timer-in-go" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nx">timer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">NewTimer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">timer</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Use Temporal's Workflow APIs instead of standard time or sleep functions so that timer behavior is recorded and replay-safe.</p>
 <hr />
-<h2 id="1-temporal-platform-architecture">1. Temporal Platform Architecture<a class="headerlink" href="#1-temporal-platform-architecture" title="Permanent link">&para;</a></h2>
-<p>Temporal is a distributed, scalable, durable, and highly available orchestration engine. It abstracts away failure recovery, distributed timers, and state persistence so developers can write complex asynchronous workflows as procedural code.</p>
-<h3 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Temporal Client</strong>: The application layer entry point that triggers, signals, and queries workflows over gRPC.</li>
-<li><strong>Temporal Frontend Service</strong>: The stateless API gateway that validates requests, handles rate-limiting, and routes calls.</li>
-<li><strong>History Service</strong>: Maintains execution state, appends events to the immutable Event History, and coordinates workflow timers.</li>
-<li><strong>Matching Service</strong>: Hosts Task Queues and matches queued workflow/activity tasks to polling workers.</li>
-<li><strong>Worker Service</strong>: Internal Temporal cluster background workers executing system-level maintenance workflows.</li>
-<li><strong>Application Workers</strong>: User-managed Go processes that poll Task Queues and execute your application's Workflow and Activity definitions.</li>
-</ol>
+<h2 id="13-event-history-and-continue-as-new">13. Event History and Continue-As-New<a class="headerlink" href="#13-event-history-and-continue-as-new" title="Permanent link">&para;</a></h2>
+<p>A Workflow Execution's <strong>Event History</strong> records what happened during the execution, including commands, task transitions, Signals, timers, and Activity results.</p>
+<p>Every event includes at least:</p>
+<ul>
+<li>Event ID</li>
+<li>Event time</li>
+<li>Event type</li>
+</ul>
+<h3 id="recorded-limits">Recorded Limits<a class="headerlink" href="#recorded-limits" title="Permanent link">&para;</a></h3>
+<p>The notes record:</p>
+<ul>
+<li>Warning around <strong>10,240 events</strong></li>
+<li>Termination at <strong>51,200 events</strong></li>
+<li>Maximum history size of approximately <strong>50 MB</strong></li>
+<li>Recommended operating target below approximately <strong>10,000 events or 10 MB</strong></li>
+</ul>
+<blockquote>
+<p>Verify exact limits for the target Temporal Cloud account or self-hosted cluster.</p>
+</blockquote>
+<h3 id="continue-as-new">Continue-As-New<a class="headerlink" href="#continue-as-new" title="Permanent link">&para;</a></h3>
+<p>When a Workflow has a large or continually growing history, use <strong>Continue-As-New</strong>. It closes the current run and starts a new run with a fresh Event History while preserving the logical Workflow ID.</p>
+<p>Common uses include:</p>
+<ul>
+<li>Entity Workflows</li>
+<li>Polling loops</li>
+<li>High-volume Signal processing</li>
+<li>Periodic processing that has no natural end</li>
+</ul>
+<hr />
+<h2 id="14-sticky-execution">14. Sticky Execution<a class="headerlink" href="#14-sticky-execution" title="Permanent link">&para;</a></h2>
+<p>Sticky Execution attempts to route subsequent Workflow Tasks to the same Worker that processed earlier tasks for that Workflow Execution.</p>
+<p>The Temporal Service creates a Worker-specific <strong>Sticky Queue</strong>. Reusing the same Worker can improve performance because the Worker may retain the Workflow's in-memory state and avoid a complete replay.</p>
+<p>If the Worker does not start the Workflow Task from the Sticky Queue within the configured timeout, recorded here as five seconds by default, Temporal disables stickiness for that task and reschedules it on the original Task Queue.</p>
+<hr />
+<h2 id="15-workflow-determinism-and-versioning">15. Workflow Determinism and Versioning<a class="headerlink" href="#15-workflow-determinism-and-versioning" title="Permanent link">&para;</a></h2>
+<h3 id="history-replay">History Replay<a class="headerlink" href="#history-replay" title="Permanent link">&para;</a></h3>
+<p>Temporal recovers Workflow state by replaying Event History. During replay, Workflow code must generate commands that are compatible with the recorded events.</p>
+<p>Examples of command-to-event relationships include:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Execute Activity
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  -&gt; ActivityTaskScheduled
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  -&gt; ActivityTaskStarted
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  -&gt; ActivityTaskCompleted
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>Start Timer
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  -&gt; TimerStarted
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  -&gt; TimerFired or TimerCanceled
+</code></pre></div>
+<h3 id="non-deterministic-code">Non-Deterministic Code<a class="headerlink" href="#non-deterministic-code" title="Permanent link">&para;</a></h3>
+<p>A Workflow can become non-deterministic if it directly uses:</p>
+<ul>
+<li>Random values</li>
+<li>Current system time</li>
+<li>Direct network or database calls</li>
+<li>Mutable global state</li>
+<li>Non-deterministic iteration order</li>
+</ul>
+<p>For example, conditionally scheduling a timer based on an unrecorded random number could cause replay to produce a different command sequence.</p>
+<h3 id="code-changes-that-may-cause-non-determinism">Code Changes That May Cause Non-Determinism<a class="headerlink" href="#code-changes-that-may-cause-non-determinism" title="Permanent link">&para;</a></h3>
+<p>Potentially unsafe changes include:</p>
+<ul>
+<li>Removing or reordering an Activity command</li>
+<li>Adding or removing a timer in an already-executed path</li>
+<li>Changing certain Activity Options</li>
+<li>Changing a Retry Policy in a replay-incompatible way</li>
+<li>Modifying branching logic for existing executions</li>
+</ul>
+<p>Use Temporal's versioning mechanisms and Worker Deployment features to maintain compatibility for running Workflow Executions.</p>
+<h3 id="workflow-static-analysis-for-go">Workflow Static Analysis for Go<a class="headerlink" href="#workflow-static-analysis-for-go" title="Permanent link">&para;</a></h3>
+<p>The Workflow Check tool can help detect some non-deterministic Go code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>go<span class="w"> </span>install<span class="w"> </span>go.temporal.io/sdk/contrib/tools/workflowcheck@latest
+</code></pre></div>
+<h3 id="reset">Reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h3>
+<p>If a bad deployment produces non-deterministic failures, Temporal Reset can create a new run from a selected point in the Event History.</p>
+<p>Reset does not simply continue from the Worker's current in-memory position. Understand the selected reset point and the possibility of repeated side effects before using it.</p>
+<hr />
+<h2 id="16-temporal-cluster-services">16. Temporal Cluster Services<a class="headerlink" href="#16-temporal-cluster-services" title="Permanent link">&para;</a></h2>
+<p>A self-hosted Temporal Cluster includes these main services:</p>
+<h3 id="frontend-service">Frontend Service<a class="headerlink" href="#frontend-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Receives SDK, CLI, and Web UI requests</li>
+<li>Validates and routes inbound calls</li>
+<li>Acts as the API gateway for the cluster</li>
+</ul>
+<h3 id="history-service">History Service<a class="headerlink" href="#history-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Maintains Workflow Execution state</li>
+<li>Records Event History</li>
+<li>Processes Workflow state transitions</li>
+</ul>
+<h3 id="matching-service">Matching Service<a class="headerlink" href="#matching-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Manages Task Queues</li>
+<li>Matches Workflow and Activity Tasks with polling Workers</li>
+</ul>
+<h3 id="worker-service">Worker Service<a class="headerlink" href="#worker-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Runs internal Temporal system Workflows</li>
+<li>Does not execute application Workflow or Activity code</li>
+</ul>
+<p>A production deployment may also include:</p>
+<ul>
+<li>A load balancer or ingress</li>
+<li>A supported persistence database</li>
+<li>Elasticsearch or another supported Visibility store, depending on deployment mode</li>
+<li>Monitoring and dashboards, such as Prometheus and Grafana</li>
+</ul>
 <h3 id="system-flow-diagram">System Flow Diagram<a class="headerlink" href="#system-flow-diagram" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
@@ -1150,651 +1889,132 @@
     Worker-&gt;&gt;Cluster: Complete Workflow
     Cluster--&gt;&gt;Client: Workflow Return Result</code></pre>
 <hr />
-<h2 id="2-core-concepts-workflows-vs-activities">2. Core Concepts: Workflows vs Activities<a class="headerlink" href="#2-core-concepts-workflows-vs-activities" title="Permanent link">&para;</a></h2>
-<h3 id="workflows-durable-execution">Workflows: Durable Execution<a class="headerlink" href="#workflows-durable-execution" title="Permanent link">&para;</a></h3>
-<p>A <strong>Workflow Definition</strong> is an orchestration function written in Go. Its execution state is saved to the cluster at every step. If the host machine dies, a container restarts, or the network partitions, Temporal recovers the execution state on another worker by replaying its Event History.</p>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Workflow Golden Rule</strong>: Workflow code must be purely deterministic. No direct disk I/O, no network calls, no random numbers, and no standard Go concurrency primitives (use <code>workflow.Go</code> instead of <code>go</code>).</p>
-</blockquote>
-<h3 id="activities-side-effects-io">Activities: Side Effects &amp; I/O<a class="headerlink" href="#activities-side-effects-io" title="Permanent link">&para;</a></h3>
-<p>An <strong>Activity Definition</strong> encapsulates non-deterministic operations and side effects:
-- Calling third-party APIs (Stripe, Twilio, OpenAI, REST/gRPC endpoints)
-- Reading or writing to PostgreSQL, Redis, DynamoDB
-- Disk filesystem read/write operations
-- Heavy computational tasks</p>
-<p>Activities can be retried automatically based on custom exponential backoff policies and independently monitored via heartbeats.</p>
-<h3 id="workflows-vs-activities-comparison-matrix">Workflows vs Activities Comparison Matrix<a class="headerlink" href="#workflows-vs-activities-comparison-matrix" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Workflow</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Primary Role</strong></td>
-<td style="text-align: left;">Orchestration &amp; State Coordination</td>
-<td style="text-align: left;">Execution of side effects &amp; I/O</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Execution Guarantee</strong></td>
-<td style="text-align: left;">Purely deterministic replay</td>
-<td style="text-align: left;">Idempotent or non-deterministic execution</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Timeouts</strong></td>
-<td style="text-align: left;">Execution &amp; Run timeouts</td>
-<td style="text-align: left;">Start-To-Close, Schedule-To-Close, Heartbeat</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Retries</strong></td>
-<td style="text-align: left;">Manual or start-configured (Rare)</td>
-<td style="text-align: left;">Exponential backoff retry policies (Default)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Concurrency</strong></td>
-<td style="text-align: left;"><code>workflow.Go</code>, <code>workflow.Channel</code></td>
-<td style="text-align: left;">Goroutines, worker threads, async tasks</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Duration</strong></td>
-<td style="text-align: left;">Minutes to years</td>
-<td style="text-align: left;">Seconds to hours</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>External Calls</strong></td>
-<td style="text-align: left;">❌ Strictly forbidden</td>
-<td style="text-align: left;">✅ Supported</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="3-workers-and-task-queues">3. Workers and Task Queues<a class="headerlink" href="#3-workers-and-task-queues" title="Permanent link">&para;</a></h2>
-<h3 id="worker-architecture">Worker Architecture<a class="headerlink" href="#worker-architecture" title="Permanent link">&para;</a></h3>
-<p>A Temporal Worker is a standalone Go process run by your engineering team. Workers maintain persistent long-polling gRPC connections to the Temporal Cluster.</p>
-<pre class="mermaid"><code>graph LR
-    subgraph TemporalCluster[Temporal Cluster]
-        TQ_W[Workflow Task Queue]
-        TQ_A[Activity Task Queue]
-    end
-
-    subgraph GoWorkers[Go Worker Fleet]
-        W1[Worker Pod 1]
-        W2[Worker Pod 2]
-        W3[Worker Pod N]
-    end
-
-    TQ_W -.-&gt;|Poll &amp; Match| W1
-    TQ_W -.-&gt;|Poll &amp; Match| W2
-    TQ_A -.-&gt;|Poll &amp; Match| W2
-    TQ_A -.-&gt;|Poll &amp; Match| W3</code></pre>
-<h3 id="task-queue-polling-mechanics">Task Queue Polling Mechanics<a class="headerlink" href="#task-queue-polling-mechanics" title="Permanent link">&para;</a></h3>
+<h2 id="17-polyglot-development">17. Polyglot Development<a class="headerlink" href="#17-polyglot-development" title="Permanent link">&para;</a></h2>
+<p>Temporal supports polyglot applications. Different parts of one application can use different SDK languages.</p>
+<p>Example:</p>
 <ul>
-<li>Task Queues are <strong>dynamically created</strong> as soon as an activity/workflow schedules a task or a worker polls for work.</li>
-<li>Workers can be partitioned to dedicate specific hardware (e.g., GPU nodes, high-memory instances) to specific Task Queues.</li>
-<li>Backpressure is built-in: if all workers are busy, tasks remain safely queued in Temporal's persistence layer without dropping requests.</li>
+<li>A TypeScript Client starts a Workflow</li>
+<li>The Workflow is written in Go</li>
+<li>The Workflow invokes an Activity written in Java</li>
 </ul>
-<h3 id="high-availability-recommendations">High Availability Recommendations<a class="headerlink" href="#high-availability-recommendations" title="Permanent link">&para;</a></h3>
+<p>This setup requires:</p>
+<ul>
+<li>A Go Worker to execute the Workflow code</li>
+<li>A Java Worker to execute the Activity code</li>
+<li>Compatible Task Queue and payload contracts</li>
+</ul>
+<p>Run multiple instances of each Worker type across failure domains to improve availability and scalability.</p>
+<hr />
+<h2 id="18-debugging-notes">18. Debugging Notes<a class="headerlink" href="#18-debugging-notes" title="Permanent link">&para;</a></h2>
+<h3 id="worker-appears-active-after-shutdown">Worker Appears Active After Shutdown<a class="headerlink" href="#worker-appears-active-after-shutdown" title="Permanent link">&para;</a></h3>
+<p>After a Worker is stopped, the Web UI may still temporarily show recent poller information. It can display Workers that polled within the previous few minutes rather than only currently active processes.</p>
+<p>If no compatible Worker is polling:</p>
+<ul>
+<li>Tasks remain in the Task Queue</li>
+<li>Schedule-to-Start latency increases</li>
+<li>The Task Queue backlog grows</li>
+</ul>
+<h3 id="debugging-checklist">Debugging Checklist<a class="headerlink" href="#debugging-checklist" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Minimum 2 Workers per Queue</strong>: Always deploy at least 2 worker replicas across distinct availability zones.</li>
-<li><strong>Graceful Shutdown</strong>: Always capture <code>os.Interrupt</code> or <code>syscall.SIGTERM</code> using <code>worker.InterruptCh()</code> to allow currently running activities to drain or heartbeat before exiting.</li>
-<li><strong>Resource Tuning</strong>: Adjust <code>worker.Options.MaxConcurrentActivityExecutionSize</code> and <code>MaxConcurrentWorkflowTaskExecutionSize</code> based on available CPU and RAM.</li>
+<li>Confirm that the Worker is connected to the correct Temporal address and Namespace.</li>
+<li>Confirm that the Worker polls the expected Task Queue.</li>
+<li>Confirm that the required Workflow and Activities are registered.</li>
+<li>Check Worker logs for authentication, TLS, or gRPC failures.</li>
+<li>Inspect the Workflow Event History in the Web UI.</li>
+<li>Check pending tasks and Task Queue pollers.</li>
+<li>Verify Activity timeout and Retry Policy settings.</li>
+<li>Check for non-deterministic replay errors after deployments.</li>
+<li>Confirm that payload codecs and Data Converters match between Clients and Workers.</li>
 </ol>
 <hr />
-<h2 id="4-go-sdk-implementation-patterns">4. Go SDK Implementation Patterns<a class="headerlink" href="#4-go-sdk-implementation-patterns" title="Permanent link">&para;</a></h2>
-<h3 id="initializing-the-client">Initializing the Client<a class="headerlink" href="#initializing-the-client" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="s">"log"</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="s">"go.temporal.io/sdk/client"</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewTemporalClient</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span><span class="w"> </span><span class="c1">// "localhost:7233"</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="nx">Namespace</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultNamespace</span><span class="p">,</span><span class="w"> </span><span class="c1">// "default"</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="defining-and-registering-activities">Defining and Registering Activities<a class="headerlink" href="#defining-and-registering-activities" title="Permanent link">&para;</a></h3>
-<p>Activities accept a standard Go <code>context.Context</code> and strongly typed parameters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">app</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s">"context"</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s">"fmt"</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="s">"time"</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="s">"go.temporal.io/sdk/activity"</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">)</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PaymentInput</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">AccountID</span><span class="w"> </span><span class="kt">string</span><span class="w">  </span><span class="s">`json:"account_id"`</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nx">Amount</span><span class="w">    </span><span class="kt">float64</span><span class="w"> </span><span class="s">`json:"amount"`</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PaymentOutput</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nx">TransactionID</span><span class="w"> </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:"transaction_id"`</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nx">Timestamp</span><span class="w">     </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:"timestamp"`</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="p">}</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="kd">func</span><span class="w"> </span><span class="nx">ProcessPaymentActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="nx">PaymentInput</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">PaymentOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">activity</span><span class="p">.</span><span class="nx">GetLogger</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Processing payment"</span><span class="p">,</span><span class="w"> </span><span class="s">"AccountID"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">AccountID</span><span class="p">,</span><span class="w"> </span><span class="s">"Amount"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">Amount</span><span class="p">)</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="c1">// Simulated external API call</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">Amount</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"invalid transaction amount: %.2f"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">Amount</span><span class="p">)</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">PaymentOutput</span><span class="p">{</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">        </span><span class="nx">TransactionID</span><span class="p">:</span><span class="w"> </span><span class="s">"txn_9837429837"</span><span class="p">,</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">        </span><span class="nx">Timestamp</span><span class="p">:</span><span class="w">     </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UTC</span><span class="p">(),</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="defining-and-registering-workflows">Defining and Registering Workflows<a class="headerlink" href="#defining-and-registering-workflows" title="Permanent link">&para;</a></h3>
-<p>Workflows require <code>workflow.Context</code> as their first argument:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">app</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="s">"time"</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="s">"go.temporal.io/sdk/temporal"</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="s">"go.temporal.io/sdk/workflow"</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kd">type</span><span class="w"> </span><span class="nx">OrderWorkflowInput</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nx">OrderID</span><span class="w">   </span><span class="kt">string</span><span class="w">       </span><span class="s">`json:"order_id"`</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nx">Customer</span><span class="w">  </span><span class="kt">string</span><span class="w">       </span><span class="s">`json:"customer"`</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nx">Payment</span><span class="w">   </span><span class="nx">PaymentInput</span><span class="w"> </span><span class="s">`json:"payment"`</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="kd">func</span><span class="w"> </span><span class="nx">OrderFulfillmentWorkflow</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="nx">OrderWorkflowInput</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">GetLogger</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Starting OrderFulfillmentWorkflow"</span><span class="p">,</span><span class="w"> </span><span class="s">"OrderID"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">OrderID</span><span class="p">)</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="c1">// Configure Activity Execution Options</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nx">activityOptions</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ActivityOptions</span><span class="p">{</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="nx">StartToCloseTimeout</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="nx">RetryPolicy</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">temporal</span><span class="p">.</span><span class="nx">RetryPolicy</span><span class="p">{</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">            </span><span class="nx">InitialInterval</span><span class="p">:</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">            </span><span class="nx">BackoffCoefficient</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="nx">MaximumInterval</span><span class="p">:</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">            </span><span class="nx">MaximumAttempts</span><span class="p">:</span><span class="w">    </span><span class="mi">5</span><span class="p">,</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="p">},</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">activityOptions</span><span class="p">)</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="c1">// Execute Payment Activity</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">paymentResult</span><span class="w"> </span><span class="nx">PaymentOutput</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">ProcessPaymentActivity</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">Payment</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">paymentResult</span><span class="p">)</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="s">"Payment processing failed"</span><span class="p">,</span><span class="w"> </span><span class="s">"Error"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">    </span><span class="c1">// Durable Sleep: survives restarts and machine reboots</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Payment confirmed. Waiting 24 hours before follow-up notification..."</span><span class="p">)</span>
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">)</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>
-<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">paymentResult</span><span class="p">.</span><span class="nx">TransactionID</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="worker-bootstrap">Worker Bootstrap<a class="headerlink" href="#worker-bootstrap" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="s">"log"</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="s">"go.temporal.io/sdk/client"</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="s">"go.temporal.io/sdk/worker"</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="s">"your_project/app"</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">TaskQueueName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ORDER_PROCESSING_TASK_QUEUE"</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">"Failed to initialize client: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="nx">w</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">TaskQueueName</span><span class="p">,</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="c1">// Register workflows &amp; activities</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">RegisterWorkflow</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">OrderFulfillmentWorkflow</span><span class="p">)</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">RegisterActivity</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">ProcessPaymentActivity</span><span class="p">)</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="c1">// Start worker listener (blocks until interrupt signal)</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">w</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">InterruptCh</span><span class="p">());</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">"Worker exited with error: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="triggering-a-workflow-execution">Triggering a Workflow Execution<a class="headerlink" href="#triggering-a-workflow-execution" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">StartOrder</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">orderID</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">WorkflowRun</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">StartWorkflowOptions</span><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="s">"order-"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">orderID</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nx">TaskQueue</span><span class="p">:</span><span class="w"> </span><span class="nx">TaskQueueName</span><span class="p">,</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="c1">// Reject duplicates if an instance is already running</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nx">WorkflowIDReusePolicy</span><span class="p">:</span><span class="w"> </span><span class="nx">temporal</span><span class="p">.</span><span class="nx">WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE</span><span class="p">,</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nx">input</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">OrderWorkflowInput</span><span class="p">{</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nx">OrderID</span><span class="p">:</span><span class="w">  </span><span class="nx">orderID</span><span class="p">,</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="nx">Customer</span><span class="p">:</span><span class="w"> </span><span class="s">"alice@example.com"</span><span class="p">,</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nx">Payment</span><span class="p">:</span><span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">PaymentInput</span><span class="p">{</span><span class="nx">AccountID</span><span class="p">:</span><span class="w"> </span><span class="s">"acc_101"</span><span class="p">,</span><span class="w"> </span><span class="nx">Amount</span><span class="p">:</span><span class="w"> </span><span class="mf">249.99</span><span class="p">},</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nx">run</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">ExecuteWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">OrderFulfillmentWorkflow</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">)</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Started workflow with ID: %s, RunID: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">run</span><span class="p">.</span><span class="nx">GetID</span><span class="p">(),</span><span class="w"> </span><span class="nx">run</span><span class="p">.</span><span class="nx">GetRunID</span><span class="p">())</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">run</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="5-workflow-determinism-replay-mechanics">5. Workflow Determinism &amp; Replay Mechanics<a class="headerlink" href="#5-workflow-determinism-replay-mechanics" title="Permanent link">&para;</a></h2>
-<h3 id="how-event-replay-works">How Event Replay Works<a class="headerlink" href="#how-event-replay-works" title="Permanent link">&para;</a></h3>
-<p>When a worker receives a Workflow Task, it executes the Go workflow code from line 1. When it hits an activity invocation or timer:
-1. It looks at the <strong>Event History</strong>.
-2. If <code>ActivityTaskCompleted</code> or <code>TimerFired</code> is present in the history, Temporal returns the recorded result immediately without executing the activity again.
-3. This is how Temporal recovers execution state in-memory after worker crashes.</p>
-<pre class="mermaid"><code>flowchart TD
-    Start[Worker Begins Replay] --&gt; CheckHistory{Next Command in History?}
-    CheckHistory -- "Activity Completed" --&gt; SupplyResult[Inject Cached Result from Event History]
-    SupplyResult --&gt; NextCodeLine[Execute Next Line of Code]
-    NextCodeLine --&gt; CheckHistory
-    CheckHistory -- "New Command Scheduled" --&gt; SendCommand[Send Command to Cluster]
-    CheckHistory -- "Command Mismatch (Bug)" --&gt; Panic[Non-Deterministic Error Detected!]</code></pre>
-<h3 id="the-determinism-matrix-forbidden-vs-safe-go-primitives">The Determinism Matrix: Forbidden vs Safe Go Primitives<a class="headerlink" href="#the-determinism-matrix-forbidden-vs-safe-go-primitives" title="Permanent link">&para;</a></h3>
-<p>Writing non-deterministic code in a workflow will cause replay failure:</p>
+<h2 id="19-quick-reference">19. Quick Reference<a class="headerlink" href="#19-quick-reference" title="Permanent link">&para;</a></h2>
+<h3 id="when-to-use-each-feature">When to Use Each Feature<a class="headerlink" href="#when-to-use-each-feature" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Category</th>
-<th style="text-align: left;">❌ Forbidden in Workflow Code</th>
-<th style="text-align: left;">✅ Safe Temporal Alternative</th>
-<th style="text-align: left;">Why It Breaks Replay</th>
+<th>Requirement</th>
+<th>Temporal feature</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Time</strong></td>
-<td style="text-align: left;"><code>time.Now()</code></td>
-<td style="text-align: left;"><code>workflow.Now(ctx)</code></td>
-<td style="text-align: left;">System clock advances during replay</td>
+<td>Execute non-deterministic or external work</td>
+<td>Activity</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Sleeping</strong></td>
-<td style="text-align: left;"><code>time.Sleep(10 * time.Second)</code></td>
-<td style="text-align: left;"><code>workflow.Sleep(ctx, 10*time.Second)</code></td>
-<td style="text-align: left;">Pauses worker thread; not durable</td>
+<td>Send an asynchronous state-changing message</td>
+<td>Signal</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Concurrency</strong></td>
-<td style="text-align: left;"><code>go myGoroutine()</code></td>
-<td style="text-align: left;"><code>workflow.Go(ctx, myFunc)</code></td>
-<td style="text-align: left;">Unmanaged goroutines break event tracking</td>
+<td>Read Workflow state synchronously</td>
+<td>Query</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Channels</strong></td>
-<td style="text-align: left;"><code>make(chan T)</code></td>
-<td style="text-align: left;"><code>workflow.NewChannel(ctx)</code></td>
-<td style="text-align: left;">Native channels break determinism</td>
+<td>Signal a Workflow that might not exist</td>
+<td>Signal-With-Start</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Map Iteration</strong></td>
-<td style="text-align: left;"><code>for k, v := range myMap</code></td>
-<td style="text-align: left;">Extract keys into slice, sort, then iterate</td>
-<td style="text-align: left;">Go map iteration order is deliberately randomized</td>
+<td>Wait durably</td>
+<td>Workflow Timer or <code>workflow.Sleep</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Randomness</strong></td>
-<td style="text-align: left;"><code>rand.Intn(100)</code>, <code>uuid.New()</code></td>
-<td style="text-align: left;"><code>workflow.SideEffect</code> or wrap in Activity</td>
-<td style="text-align: left;">Returns different value on every replay</td>
+<td>Detect progress in a long Activity</td>
+<td>Heartbeat</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>External I/O</strong></td>
-<td style="text-align: left;"><code>http.Get()</code>, <code>sql.Open()</code></td>
-<td style="text-align: left;">Execute inside an Activity</td>
-<td style="text-align: left;">Network results vary across runs</td>
+<td>Bound Activity execution time</td>
+<td>Activity Timeout</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Global State</strong></td>
-<td style="text-align: left;">Reading/modifying global vars</td>
-<td style="text-align: left;">Keep state inside workflow instance variables</td>
-<td style="text-align: left;">Shared mutable memory introduces race conditions</td>
+<td>Recover from transient Activity failures</td>
+<td>Retry Policy</td>
+</tr>
+<tr>
+<td>Avoid unbounded Event History</td>
+<td>Continue-As-New</td>
+</tr>
+<tr>
+<td>Search Workflow Executions</td>
+<td>Visibility and Search Attributes</td>
+</tr>
+<tr>
+<td>Protect payload contents</td>
+<td>Custom Payload Codec</td>
+</tr>
+<tr>
+<td>Safely evolve long-running Workflow code</td>
+<td>Workflow versioning/deployment controls</td>
 </tr>
 </tbody>
 </table>
-<h3 id="static-analysis-with-workflowcheck">Static Analysis with workflowcheck<a class="headerlink" href="#static-analysis-with-workflowcheck" title="Permanent link">&para;</a></h3>
-<p>Temporal provides an automated linter to catch determinism violations during CI/CD before code merges to production:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Install the workflowcheck linter</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>go<span class="w"> </span>install<span class="w"> </span>go.temporal.io/sdk/contrib/tools/workflowcheck@latest
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Run analysis against your packages</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>workflowcheck<span class="w"> </span>./...
-</code></pre></div>
-<h3 id="workflow-versioning-workflowgetversion">Workflow Versioning (<code>workflow.GetVersion</code>)<a class="headerlink" href="#workflow-versioning-workflowgetversion" title="Permanent link">&para;</a></h3>
-<p>When business logic changes for active workflows, use <code>workflow.GetVersion</code> to protect running executions from replay mismatches:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">discount</span><span class="w"> </span><span class="kt">float64</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// Identifier: "applyDiscountLogic", minSupported: DefaultVersion (-1), maxSupported: 1</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nx">version</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">GetVersion</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">"applyDiscountLogic"</span><span class="p">,</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">DefaultVersion</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">if</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">DefaultVersion</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1">// Legacy logic for executions started prior to version 1</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nx">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="c1">// New logic for recent executions</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nx">discount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.15</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="6-interacting-with-running-workflows">6. Interacting with Running Workflows<a class="headerlink" href="#6-interacting-with-running-workflows" title="Permanent link">&para;</a></h2>
-<h3 id="signals-asynchronous-state-mutation">Signals (Asynchronous State Mutation)<a class="headerlink" href="#signals-asynchronous-state-mutation" title="Permanent link">&para;</a></h3>
-<p>Signals allow external systems or other workflows to push messages into a running workflow execution.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Define a Signal Name</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PaymentSignalName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"PaymentReceivedSignal"</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PaymentSignalPayload</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nx">ReceiptNumber</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"receipt_number"`</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1">// In Workflow code:</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nx">signalChan</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">GetSignalChannel</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">PaymentSignalName</span><span class="p">)</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1">// Block until signal is received or a timeout expires</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nx">selector</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">NewSelector</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nx">selector</span><span class="p">.</span><span class="nx">AddReceive</span><span class="p">(</span><span class="nx">signalChan</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ReceiveChannel</span><span class="p">,</span><span class="w"> </span><span class="nx">more</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="nx">PaymentSignalPayload</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">Receive</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">signal</span><span class="p">)</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">GetLogger</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Received payment signal"</span><span class="p">,</span><span class="w"> </span><span class="s">"Receipt"</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">ReceiptNumber</span><span class="p">)</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="p">})</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="nx">selector</span><span class="p">.</span><span class="nx">Select</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-</code></pre></div>
-<p>Sending a Signal from a Client:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SignalWorkflow</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">workflowID</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">PaymentSignalName</span><span class="p">,</span><span class="w"> </span><span class="nx">PaymentSignalPayload</span><span class="p">{</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nx">ReceiptNumber</span><span class="p">:</span><span class="w"> </span><span class="s">"rcpt_4982734"</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">})</span>
-</code></pre></div>
-<h3 id="queries-synchronous-state-inspection">Queries (Synchronous State Inspection)<a class="headerlink" href="#queries-synchronous-state-inspection" title="Permanent link">&para;</a></h3>
-<p>Queries synchronously inspect the in-memory state of a workflow execution without mutating state or appending events to Event History:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">OrderStatusQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"GetOrderStatus"</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">// Register Query Handler inside Workflow code:</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">currentStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"INITIATED"</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">SetQueryHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">OrderStatusQuery</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">currentStatus</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">})</span>
-</code></pre></div>
-<p>Querying from a Client:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">QueryWorkflow</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">workflowID</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">OrderStatusQuery</span><span class="p">)</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">val</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">status</span><span class="p">)</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Current Order Status:"</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="signal-with-start">Signal-With-Start<a class="headerlink" href="#signal-with-start" title="Permanent link">&para;</a></h3>
-<p>Guarantees atomic start-or-signal semantics:
-- If the workflow execution with the specified Workflow ID is already running, the Signal is delivered.
-- If it does not exist, it starts a new workflow instance and immediately passes the Signal.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">run</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SignalWithStartWorkflow</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">workflowID</span><span class="p">,</span><span class="w"> </span><span class="nx">signalName</span><span class="p">,</span><span class="w"> </span><span class="nx">signalArg</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="nx">WorkflowFunc</span><span class="p">,</span><span class="w"> </span><span class="nx">workflowArgs</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="limits-and-constraints">Limits and Constraints<a class="headerlink" href="#limits-and-constraints" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Pending Outgoing Signals</strong>: Maximum 2,000 pending outgoing signal requests per execution.</li>
-<li><strong>Received Signals Limit</strong>: Recommended maximum 10,000 received signals per single run. Exceeding this requires using <strong>Continue-As-New</strong>.</li>
-</ul>
-<hr />
-<h2 id="7-timeouts-heartbeats-and-cancellation">7. Timeouts, Heartbeats, and Cancellation<a class="headerlink" href="#7-timeouts-heartbeats-and-cancellation" title="Permanent link">&para;</a></h2>
-<h3 id="activity-timeout-dimensions">Activity Timeout Dimensions<a class="headerlink" href="#activity-timeout-dimensions" title="Permanent link">&para;</a></h3>
-<p>Temporal provides 4 distinct timeout options to prevent stuck tasks:</p>
-<pre class="mermaid"><code>gantt
-    title Temporal Activity Timeout Lifecycle
-    dateFormat  X
-    axisFormat %s sec
-
-    section ScheduleToClose
-    Total Allowed Execution Time (Inc. Retries &amp; Queue) :0, 80
-
-    section ScheduleToStart
-    Task Waiting in Queue :0, 15
-
-    section StartToClose
-    Attempt 1 (Fails) :15, 35
-    Attempt 2 (Succeeds) :45, 70
-
-    section HeartbeatTimeout
-    Heartbeat Window :15, 25</code></pre>
-<ol>
-<li><strong><code>StartToCloseTimeout</code></strong> (<em>Required if ScheduleToClose is omitted</em>): Max time allowed for a single activity attempt.</li>
-<li><strong><code>ScheduleToCloseTimeout</code></strong>: Total end-to-end time allowed from initial scheduling through all retries until final completion.</li>
-<li><strong><code>ScheduleToStartTimeout</code></strong>: Max time a task can linger in the Task Queue waiting for an available worker before timing out.</li>
-<li><strong><code>HeartbeatTimeout</code></strong>: Max permissible delay between heartbeats from an activity. Ideal for detecting worker crashes during long-running tasks.</li>
-</ol>
-<h3 id="activity-heartbeating">Activity Heartbeating<a class="headerlink" href="#activity-heartbeating" title="Permanent link">&para;</a></h3>
-<p>For operations longer than a few seconds (file processing, ML inference, database migrations):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">HeavyBatchProcessActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">totalBatches</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">totalBatches</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="c1">// Perform chunk of work</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="nx">processBatch</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="c1">// Record Heartbeat with progress payload</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="nx">activity</span><span class="p">.</span><span class="nx">RecordHeartbeat</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="c1">// Check for cancellation signal delivered through heartbeat</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Err</span><span class="p">()</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="k">default</span><span class="p">:</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="cancellation-vs-termination">Cancellation vs Termination<a class="headerlink" href="#cancellation-vs-termination" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Cancellation (<code>client.CancelWorkflow</code>)</strong>: A graceful stop request. The workflow context is canceled, triggering <code>&lt;-ctx.Done()</code>. Workflows can catch this to execute compensation logic (e.g., Saga pattern rollback).</li>
-<li><strong>Termination (<code>client.TerminateWorkflow</code>)</strong>: A hard, immediate kill. The workflow execution stops instantly. Cleanup logic cannot run.</li>
-</ul>
-<hr />
-<h2 id="8-error-handling-retry-policies">8. Error Handling &amp; Retry Policies<a class="headerlink" href="#8-error-handling-retry-policies" title="Permanent link">&para;</a></h2>
-<h3 id="default-retry-policy-mechanics">Default Retry Policy Mechanics<a class="headerlink" href="#default-retry-policy-mechanics" title="Permanent link">&para;</a></h3>
-<p>Activities use an exponential backoff policy by default:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">RetryPolicy</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nx">InitialInterval</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="w"> </span><span class="c1">// Default: 1s</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nx">BackoffCoefficient</span><span class="w"> </span><span class="kt">float64</span><span class="w">       </span><span class="c1">// Default: 2.0</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="nx">MaximumInterval</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="w"> </span><span class="c1">// Default: 100 * InitialInterval</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="nx">MaximumAttempts</span><span class="w">    </span><span class="kt">int32</span><span class="w">         </span><span class="c1">// Default: 0 (Unlimited)</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="nx">NonRetryableErrorTypes</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w">  </span><span class="c1">// Explicit error names to skip</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="p">}</span>
-</code></pre></div>
-<h3 id="non-retryable-application-errors">Non-Retryable Application Errors<a class="headerlink" href="#non-retryable-application-errors" title="Permanent link">&para;</a></h3>
-<p>Errors indicating business validation failures or bad inputs should never be retried:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="nx">userBalance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">transactionCost</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">temporal</span><span class="p">.</span><span class="nx">NewNonRetryableApplicationError</span><span class="p">(</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="s">"insufficient funds in user account"</span><span class="p">,</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="s">"InsufficientFundsError"</span><span class="p">,</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional details</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="p">)</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">}</span>
+<h3 id="core-go-sdk-flow">Core Go SDK Flow<a class="headerlink" href="#core-go-sdk-flow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// 1. Create a Temporal client.</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">}</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1">// 2. Create a Worker for a Task Queue.</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nx">w</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">"my-task-queue"</span><span class="p">,</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="c1">// 3. Register Workflow and Activity definitions.</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="nx">w</span><span class="p">.</span><span class="nx">RegisterWorkflow</span><span class="p">(</span><span class="nx">MyWorkflow</span><span class="p">)</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nx">w</span><span class="p">.</span><span class="nx">RegisterActivity</span><span class="p">(</span><span class="nx">MyActivity</span><span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="c1">// 4. Start polling and execute tasks.</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">w</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">InterruptCh</span><span class="p">())</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="9-event-history-size-limits-continue-as-new">9. Event History, Size Limits &amp; Continue-As-New<a class="headerlink" href="#9-event-history-size-limits-continue-as-new" title="Permanent link">&para;</a></h2>
-<h3 id="event-history-thresholds">Event History Thresholds<a class="headerlink" href="#event-history-thresholds" title="Permanent link">&para;</a></h3>
-<p>Every action (activity schedule, timer, signal) is logged to the Event History.</p>
+<h2 id="suggested-repository-description">Suggested Repository Description<a class="headerlink" href="#suggested-repository-description" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>[!WARNING]
-<strong>Hard Limits</strong>:
-- <strong>10,240 Events or 10 MB</strong>: Temporal emits a cluster warning log.
-- <strong>51,200 Events or 50 MB</strong>: The cluster <strong>forcibly terminates</strong> the Workflow Execution.
-- <strong>Production Target</strong>: Keep history below <strong>10,000 events and 10 MB</strong>.</p>
+<p>Structured learning notes for Temporal, covering Workflows, Activities, Workers, Task Queues, Signals, Queries, Visibility, retries, timeouts, Event History, determinism, security, and cluster architecture, with Go SDK examples.</p>
 </blockquote>
-<h3 id="implementing-continue-as-new">Implementing Continue-As-New<a class="headerlink" href="#implementing-continue-as-new" title="Permanent link">&para;</a></h3>
-<p>When writing long-running loops or entity workflows, periodically roll over state using <code>Continue-As-New</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">InfinitePollerWorkflow</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">iterationCount</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="c1">// Check current history event count</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="nx">info</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">info</span><span class="p">.</span><span class="nx">GetCurrentHistoryLength</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">        </span><span class="c1">// Cleanly reset history while keeping the same WorkflowID</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">NewContinueAsNewError</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">InfinitePollerWorkflow</span><span class="p">,</span><span class="w"> </span><span class="nx">iterationCount</span><span class="p">)</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="c1">// Do periodic work...</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">NewContinueAsNewError</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">InfinitePollerWorkflow</span><span class="p">,</span><span class="w"> </span><span class="nx">iterationCount</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="10-sticky-execution-performance-optimization">10. Sticky Execution &amp; Performance Optimization<a class="headerlink" href="#10-sticky-execution-performance-optimization" title="Permanent link">&para;</a></h2>
-<p>Temporal implements <strong>Sticky Execution</strong> to minimize latency:
-1. When a worker completes a workflow task, Temporal assigns a temporary worker-specific <strong>Sticky Queue</strong> to that workflow execution.
-2. Subsequent tasks are routed to the same worker process.
-3. The worker reuses its in-memory cached workflow state instead of replaying the entire Event History from scratch.
-4. Default sticky queue timeout is <strong>5 seconds</strong>. If the worker does not respond within this window, the task falls back to the main Task Queue.</p>
-<hr />
-<h2 id="11-visibility-advanced-search-attributes">11. Visibility &amp; Advanced Search Attributes<a class="headerlink" href="#11-visibility-advanced-search-attributes" title="Permanent link">&para;</a></h2>
-<h3 id="list-filter-syntax">List Filter Syntax<a class="headerlink" href="#list-filter-syntax" title="Permanent link">&para;</a></h3>
-<p>Temporal provides SQL-like querying across executions in the CLI and Web UI:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">WorkflowType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"OrderFulfillmentWorkflow"</span><span class="w"> </span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">ExecutionStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"Running"</span><span class="w"> </span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">StartTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="ss">"2026-01-01T00:00:00Z"</span>
-</code></pre></div>
-<p>CLI list command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>temporal<span class="w"> </span>workflow<span class="w"> </span>list<span class="w"> </span>--query<span class="w"> </span><span class="s1">'WorkflowType = "OrderFulfillmentWorkflow" AND ExecutionStatus = "Running"'</span>
-</code></pre></div>
-<h3 id="custom-search-attributes">Custom Search Attributes<a class="headerlink" href="#custom-search-attributes" title="Permanent link">&para;</a></h3>
-<p>Namespaces support custom indexed attributes (<code>Bool</code>, <code>Datetime</code>, <code>Double</code>, <code>Int</code>, <code>Keyword</code>, <code>KeywordList</code>, <code>Text</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Add custom attribute via Temporal CLI</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>temporal<span class="w"> </span>operator<span class="w"> </span>search-attribute<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>CustomerID<span class="w"> </span>--type<span class="w"> </span>Keyword
-</code></pre></div>
-<p>Setting attributes in Go code:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">StartWorkflowOptions</span><span class="p">{</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="s">"order-123"</span><span class="p">,</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="nx">TaskQueue</span><span class="p">:</span><span class="w"> </span><span class="s">"ORDERS"</span><span class="p">,</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="nx">SearchAttributes</span><span class="p">:</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">        </span><span class="s">"CustomerID"</span><span class="p">:</span><span class="w"> </span><span class="s">"cust_823749283"</span><span class="p">,</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="12-payload-security-codecs-encryption">12. Payload Security: Codecs &amp; Encryption<a class="headerlink" href="#12-payload-security-codecs-encryption" title="Permanent link">&para;</a></h2>
-<h3 id="end-to-end-encryption-flow">End-to-End Encryption Flow<a class="headerlink" href="#end-to-end-encryption-flow" title="Permanent link">&para;</a></h3>
-<p>To comply with HIPAA, GDPR, or PCI-DSS, raw workflow inputs and outputs can be encrypted on client/worker machines before transmitting payloads to the Temporal Server.</p>
-<pre class="mermaid"><code>flowchart LR
-    subgraph WorkerClient[Your Secure Perimeter]
-        ClientApp[Client / Worker]
-        Codec[Custom Payload Codec]
-    end
-
-    subgraph TemporalCluster[Temporal Server]
-        Storage[(Event History)]
-    end
-
-    ClientApp --&gt;|Plaintext Data| Codec
-    Codec --&gt;|AES-GCM Encrypted Payload| Storage
-    Storage --&gt;|Encrypted Payload| Codec
-    Codec --&gt;|Decrypted Plaintext| ClientApp</code></pre>
-<h3 id="remote-codec-server-integration">Remote Codec Server Integration<a class="headerlink" href="#remote-codec-server-integration" title="Permanent link">&para;</a></h3>
-<p>When payloads are encrypted, the Temporal Web UI cannot inspect inputs/outputs. A <strong>Remote Codec Server</strong> solves this:
-1. You deploy a small HTTP service inside your private VPC.
-2. The Codec Server exposes a <code>/decode</code> endpoint.
-3. Temporal Web UI / CLI authenticates via OAuth2 / mTLS and requests payload decoding on-the-fly for authorized engineers.</p>
-<hr />
-<h2 id="13-cluster-services-internals">13. Cluster Services Internals<a class="headerlink" href="#13-cluster-services-internals" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Service Name</th>
-<th style="text-align: left;">Architecture Role</th>
-<th style="text-align: left;">Scaling Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Frontend Service</strong></td>
-<td style="text-align: left;">API Gateway (gRPC), authn/authz, rate-limiting, routing</td>
-<td style="text-align: left;">Stateless; scale horizontally with traffic</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>History Service</strong></td>
-<td style="text-align: left;">Sharded execution state management, timer scheduling, history persistence</td>
-<td style="text-align: left;">Stateful sharding (partitioned by Workflow ID)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Matching Service</strong></td>
-<td style="text-align: left;">Task queue dispatch, matching tasks to worker pollers</td>
-<td style="text-align: left;">Scaled based on task queue count and throughput</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Worker Service</strong></td>
-<td style="text-align: left;">Executes internal cluster system workflows (e.g., archival)</td>
-<td style="text-align: left;">Scaled automatically</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Persistence Store</strong></td>
-<td style="text-align: left;">Backed by PostgreSQL, MySQL, Cassandra, or SQLite (dev)</td>
-<td style="text-align: left;">Scaled according to storage and IOPS limits</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="14-polyglot-microservices-orchestration">14. Polyglot Microservices Orchestration<a class="headerlink" href="#14-polyglot-microservices-orchestration" title="Permanent link">&para;</a></h2>
-<p>Temporal is language-agnostic across its official SDKs:
-- <strong>Go SDK</strong>: Ideal for high-throughput, latency-critical orchestration and workers.
-- <strong>TypeScript / Node.js</strong>: Ideal for web services and frontend-driven backends.
-- <strong>Python SDK</strong>: Ideal for AI/ML workflows, data engineering, and LLM pipelines.
-- <strong>Java SDK</strong>: Enterprise services and legacy system integration.</p>
-<p>A single workflow written in Go can schedule an activity written in Python that runs on a GPU worker, then schedule another activity in TypeScript.</p>
-<hr />
-<h2 id="15-production-troubleshooting-debugging-checklist">15. Production Troubleshooting &amp; Debugging Checklist<a class="headerlink" href="#15-production-troubleshooting-debugging-checklist" title="Permanent link">&para;</a></h2>
-<p>If workflows are stuck or failing, follow this checklist:</p>
-<ul>
-<li>[ ] <strong>Poller Status</strong>: Confirm at least one worker is actively polling the specific <code>TaskQueue</code> shown in the Web UI.</li>
-<li>[ ] <strong>Namespace Verification</strong>: Verify that client and worker are connecting to the same cluster endpoint and namespace.</li>
-<li>[ ] <strong>Type Registration</strong>: Verify that all Workflow and Activity functions are registered on the worker prior to calling <code>w.Run()</code>.</li>
-<li>[ ] <strong>Non-Determinism Errors</strong>: Check worker logs for <code>UnhandledCommand</code> or replay panics. Use <code>workflowcheck</code> to audit recent changes.</li>
-<li>[ ] <strong>Timeout Misconfiguration</strong>: Verify <code>StartToCloseTimeout</code> is configured. If unconfigured, activities might hang indefinitely if a worker crashes.</li>
-<li>[ ] <strong>Event History Spikes</strong>: Check if history length exceeds 10,000 events. Refactor with <code>Continue-As-New</code>.</li>
-<li>[ ] <strong>Data Converter / Codec Alignment</strong>: Verify that both the client starting the workflow and the worker executing it share identical Data Converters and Codec configurations.</li>
-</ul>
-<hr />
-<h2 id="16-frequently-asked-questions-faq">16. Frequently Asked Questions (FAQ)<a class="headerlink" href="#16-frequently-asked-questions-faq" title="Permanent link">&para;</a></h2>
-<h3 id="what-is-the-primary-difference-between-a-temporal-workflow-and-an-activity">What is the primary difference between a Temporal Workflow and an Activity?<a class="headerlink" href="#what-is-the-primary-difference-between-a-temporal-workflow-and-an-activity" title="Permanent link">&para;</a></h3>
-<p>A <strong>Workflow</strong> manages the overall state and orchestration flow and must be purely deterministic so it can be replayed safely from Event History. An <strong>Activity</strong> performs side effects (API calls, database queries, file access) and can fail, timeout, and retry independently.</p>
-<h3 id="why-does-temporal-require-workflows-to-be-deterministic">Why does Temporal require Workflows to be deterministic?<a class="headerlink" href="#why-does-temporal-require-workflows-to-be-deterministic" title="Permanent link">&para;</a></h3>
-<p>Temporal does not persist running thread memory. When a worker restarts or crashes, Temporal reconstructs the workflow's state by replaying its historical events from line 1. If code uses non-deterministic primitives (e.g., <code>time.Now()</code>, random numbers, unmanaged goroutines), re-execution would produce different commands, corrupting execution integrity.</p>
-<h3 id="what-happens-when-event-history-reaches-51200-events">What happens when Event History reaches 51,200 events?<a class="headerlink" href="#what-happens-when-event-history-reaches-51200-events" title="Permanent link">&para;</a></h3>
-<p>The Temporal Cluster forcibly terminates the workflow execution to prevent unbounded memory and database degradation. To avoid this, workflows expected to run indefinitely (loops, entity workflows) must periodically call <code>Continue-As-New</code> before approaching 10,000 events.</p>
-<h3 id="how-does-temporal-compare-to-message-queues-like-kafka-or-rabbitmq">How does Temporal compare to message queues like Kafka or RabbitMQ?<a class="headerlink" href="#how-does-temporal-compare-to-message-queues-like-kafka-or-rabbitmq" title="Permanent link">&para;</a></h3>
-<p>Message queues provide point-to-point asynchronous message delivery but require you to manually manage state machines, retry counters, distributed timers, error recovery, and race conditions. Temporal provides complete end-to-end orchestration, guaranteed state persistence, built-in distributed timers, and procedural execution logic.</p>
-<h3 id="can-i-use-goroutines-inside-a-go-workflow">Can I use Goroutines inside a Go Workflow?<a class="headerlink" href="#can-i-use-goroutines-inside-a-go-workflow" title="Permanent link">&para;</a></h3>
-<p>Do not use standard Go <code>go func()</code> routines. Instead, use <code>workflow.Go(ctx, func(ctx workflow.Context) { ... })</code>. Temporal's wrapper maintains cooperative scheduling and deterministic execution tracking.</p>
-<hr />
-<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
-<p>Contributions, issues, and feature additions are welcome! Please feel free to open a Pull Request.</p>
-<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
-<p>This project is open-source under the <a href="https://github.com/rishabh625/temporal-go-handbook/blob/main/LICENSE">MIT License</a>.</p>
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>These notes were reorganized from personal study material. Temporal APIs, defaults, limits, and recommended deployment practices can change. Validate production decisions against the documentation for the Temporal Server, Temporal Cloud, CLI, and SDK versions in use.</p>
 
 
 
