@@ -9,7 +9,10 @@
 
 ---
 
-## Quick Reference / TL;DR Cheat Sheet
+<details>
+<summary><strong>⚡ Quick Reference / TL;DR Cheat Sheet (Click to expand)</strong></summary>
+
+<br>
 
 | Requirement / Scenario | Temporal Primitive | Go SDK Implementation / API |
 |:---|:---|:---|
@@ -24,9 +27,14 @@
 | **Filter & search workflows** | Search Attributes | List Filter: `WorkflowType = "Order" AND Status = "Running"` |
 | **Data encryption & privacy** | Custom Payload Codec | Implement `converter.PayloadCodec` |
 
+</details>
+
 ---
 
-## Table of Contents
+<details>
+<summary><strong>📖 Table of Contents (Click to expand)</strong></summary>
+
+<br>
 
 - [1. Temporal Platform Architecture](#1-temporal-platform-architecture)
   - [Core Components](#core-components)
@@ -76,6 +84,8 @@
 - [14. Polyglot Microservices Orchestration](#14-polyglot-microservices-orchestration)
 - [15. Production Troubleshooting & Debugging Checklist](#15-production-troubleshooting--debugging-checklist)
 - [16. Frequently Asked Questions (FAQ)](#16-frequently-asked-questions-faq)
+
+</details>
 
 ---
 
